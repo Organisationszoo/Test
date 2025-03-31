@@ -1,117 +1,208 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="de">
 <head>
   <meta charset="UTF-8">
   <title>Fragebogen (15 Fragen, Mix aus Tiermetaphern)</title>
-  
-  <!-- Chart.js für die Diagramme -->
+  <!-- Google Font und Bibliotheken -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  
-  <!-- html2canvas für Screenshots -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
   
   <style>
+/* Container für den Fragebogen – relativ positioniert, damit das Bild korrekt ausgerichtet wird */
+#questionnaire-container {
+  position: relative;
+}
+
+/* Bild oben rechts im Fragebogen (Wasserzeichen/Logo) */
+.top-right-image {
+  position: absolute;
+  top: 10px;       /* Abstand von oben – anpassen */
+  right: 10px;     /* Abstand von rechts – anpassen */
+  width: 80px;     /* Bildgröße anpassen (kleiner als bisher) */
+  height: auto;
+  z-index: 9999;
+}
+    /* Basisstil und modernes Farbschema */
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Roboto', sans-serif;
       margin: 0 auto;
       max-width: 900px;
-      background: #f7f9fc;
+      background: linear-gradient(135deg, #e0f7fa, #b2ebf2);
       padding: 20px;
       color: #333;
+      position: relative;
     }
     h1 {
       text-align: center;
-      color: #1a73e8;
-      margin-bottom: 5px;
+      color: #00796b;
+      margin-bottom: 10px;
+      font-weight: 700;
     }
     p.beschreibung {
       text-align: center;
       margin-top: 0;
-      font-size: 0.95em;
-      color: #555;
+      font-size: 1em;
+      color: #004d40;
     }
+    /* Frageboxen und Buttons – unverändert */
     .frage-box {
       background: #fff;
       margin: 20px 0;
-      padding: 15px;
-      border-radius: 8px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: transform 0.2s;
+    }
+    .frage-box:hover {
+      transform: translateY(-3px);
     }
     .frage-box h2 {
-      font-size: 1.1em;
+      font-size: 1.2em;
       margin-top: 0;
+      color: #00695c;
     }
     .skala-antwort {
       margin-left: 20px;
-      margin-top: 5px;
+      margin-top: 10px;
     }
     .skala-antwort label {
       display: inline-block;
-      margin-right: 10px;
+      margin-right: 15px;
       cursor: pointer;
+      font-weight: 500;
+      color: #004d40;
     }
     button {
       display: block;
       margin: 20px auto;
-      padding: 12px 20px;
-      background-color: #4caf50;
+      padding: 12px 30px;
+      background-color: #00796b;
       color: white;
       border: none;
-      border-radius: 4px;
+      border-radius: 25px;
       font-size: 16px;
       cursor: pointer;
+      transition: background-color 0.3s;
     }
     button:hover {
-      background-color: #45a049;
+      background-color: #00695c;
     }
+    /* Ergebnisbereich */
     #ergebnis {
       background: #fff;
-      padding: 10px;
-      border-radius: 8px;
-      font-size: 11px;
-      max-width: 800px;
-      margin: 0 auto;
+      padding: 30px;
+      border-radius: 10px;
+      font-size: 15px;
+      max-width: 1000px;
+      min-height: 400px;
+      margin: 20px auto;
       color: #333;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      position: relative;
+      z-index: 2;
     }
-    .tier-block {
-      font-size: 11px;
-      background: #f4f4f4;
-      padding: 8px;
-      border-radius: 6px;
-      margin: 4px 0;
+    /* Fixes Bild oben rechts im Ergebnisbereich */
+    .fixed-top-right {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 100px;
+      height: auto;
+      opacity: 0.8;
+      z-index: 3;
+    }
+    /* Evaluation-Card */
+    .evaluation-card {
+      background: #fafafa;
+      border: 1px solid #e0e0e0;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 2;
+    }
+    .evaluation-card h2 {
+      font-size: 1.8em;
+      color: #00796b;
+      margin-bottom: 10px;
+    }
+    .tier-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      margin-bottom: 20px;
+    }
+    .tier-item {
+      background: #e0f2f1;
+      border-radius: 5px;
+      padding: 10px 20px;
+      margin: 10px;
+      font-weight: 500;
+      color: #004d40;
+    }
+    .evaluation-explanation {
+      font-size: 1em;
+      line-height: 1.5;
+      color: #555;
+      border-top: 1px solid #e0e0e0;
+      padding-top: 20px;
     }
     canvas {
       max-width: 100%;
       height: auto;
     }
     .ergebnis-erklaerung {
-      font-size: 11px;
-      margin-top: 12px;
+      font-size: 12px;
+      margin-top: 15px;
       page-break-inside: avoid;
     }
-    #chart {
-      display: block;
-      max-width: 600px;
-      margin: 20px auto;
+    /* Druck-Stylesheet: Nur der Ergebnisbereich wird gedruckt */
+    @media print {
+      body > *:not(#ergebnis) {
+        display: none !important;
+      }
+      #ergebnis {
+        display: block;
+        width: 100%;
+        margin: 0;
+        padding: 20px;
+        box-shadow: none;
+        border: none;
+      }
     }
   </style>
 </head>
 <body>
+  <!-- Optional: Bild oben rechts im Fragebogen -->
+  <img class="top-right-image" src="eule-organisationszoo.jpg" alt="Logo" />
 
-<h1>Dein Fragebogen</h1>
-<p class="beschreibung">
-  Wähle für jede Aussage eine Zahl von 0 bis 4,<br>
-  wobei 0 gar nicht zutrifft und 4 völlig zutrifft.
-</p>
+  <h1>Dein Fragebogen</h1>
+  <p class="beschreibung">
+    Wähle für jede Aussage eine Zahl von 0 bis 4,<br>
+    wobei 0 gar nicht zutrifft und 4 völlig zutrifft.
+  </p>
+  
+  <form id="fragebogen">
+    <!-- Hier würde dein Formular mit den Fragen stehen -->
+  </form>
+  <button form="fragebogen" type="submit">Auswerten</button>
+  
+ <div id="ergebnis" style="position: relative;">
+  <!-- Fixiertes Bild -->
+  <img class="fixed-top-right" src="eule-organisationszoo.jpg" alt="Eule" />
+  <!-- Container für den dynamischen Inhalt -->
+  <div id="dynamic-result"></div>
+</div>
 
-<form id="fragebogen"></form>
-<button form="fragebogen" type="submit">Auswerten</button>
-
-<!-- Ergebnis-Bereich -->
-<div id="ergebnis"></div>
-
-<script>
+  <!-- Druck-Button -->
+  <button id="printButton" type="button">Drucken / Als PDF speichern</button>
+  
+  <script>
 document.addEventListener("DOMContentLoaded", function() {
+ var formElem = document.getElementById("fragebogen");
 
   // =====================================================
   // 1) FRAGEN (15 Stück) – Formular
@@ -586,7 +677,10 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // 🎯 Ausgabe der Top 5 Tiere
     var ergebnisElem = document.getElementById("ergebnis");
-    ergebnisElem.innerHTML = "<h2 style='font-size:1.1em;'>🌀 Deine Top-5 Tierprofile</h2>";
+    ergebnisElem.innerHTML = `
+  <img class="fixed-top-right" src="eule-organisationszoo.jpg" alt="Eule" />
+  <h2 style='font-size:1.1em;'>🌀 Deine Top-5 Tierprofile</h2>
+`;
 
     var sortedTiers = Object.entries(tierCounts).sort((a, b) => b[1] - a[1]);
     var top5 = sortedTiers.slice(0, 5);
@@ -807,8 +901,36 @@ document.addEventListener("DOMContentLoaded", function() {
     `;
     ergebnisElem.appendChild(reflekt);
   });
-});
-</script>
 
+ // Dynamische Auswertung: Beim Absenden des Formulars wird der Inhalt in "dynamic-result" eingefügt.
+      formElem.addEventListener("submit", function(evt) {
+        evt.preventDefault();
+        var formData = new FormData(formElem);
+        var scoreQ1 = parseInt(formData.get("q1")) || 0;
+        
+        var resultHTML = `
+          <div class="evaluation-card">
+            <h2>Deine Auswertung</h2>
+            <div class="evaluation-explanation">
+              <p>
+                Basierend auf deiner Antwort erhältst du einen Score von ${scoreQ1}. 
+                Das zeigt, dass du [dynamische Erklärung hier ergänzen kannst].
+              </p>
+            </div>
+          </div>
+        `;
+        document.getElementById("dynamic-result").innerHTML = resultHTML;
+      });
+      
+      // Druck-Button: Öffnet den Browser-Druckdialog
+      var printButton = document.getElementById("printButton");
+      printButton.addEventListener("click", function() {
+        window.print();
+      });
+    });
+  </script>
+  
 </body>
 </html>
+
+
