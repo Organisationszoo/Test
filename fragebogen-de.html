@@ -732,36 +732,36 @@
 
  <!-- 🐾 Einleitung (zentriert) -->
 <div style="text-align: center;">
-  <h2>Welcome to the <span style="color:#E44A00;">OrganisationsZoo</span></h2>
+  <h2>Willkommen beim <span style="color:#E44A00;">OrganisationsZoo</span></h2>
 </div>
 
 <!-- 💬 Einleitungstext (linksbündig) in einem eigenen Container -->
 <div class="intro-text" style="text-align: left;">
   <p>
-   Imagine you’re active in various areas of life – perhaps with friends, in a sports club, among family, or on leisure projects. Depending on the context, your perspective, behavior, and interactions with others can shift.
+    Stell dir vor, du bist in unterschiedlichen Lebensbereichen aktiv – vielleicht in einer Freundesgruppe, einem Sportverein, im Familienkreis oder bei Freizeitprojekten. Je nach Situation verändern sich deine Perspektive, dein Verhalten und dein Zusammenspiel mit anderen.
   </p>
   <p>
-    This questionnaire is designed to help you get to know yourself better: How do you behave in everyday situations? What are your personal strengths? Where is there room for growth? Why do some relationships flow effortlessly while others encounter friction?
+    In diesem Fragebogen geht es darum, dich selbst besser kennenzulernen: Wie verhältst du dich in bestimmten Alltagssituationen? Was sind deine persönlichen Stärken? Wo gibt es noch Entwicklungspotenzial? Warum läuft das Miteinander mit manchen Menschen reibungslos, während es mit anderen immer wieder zu Reibungspunkten kommt?
   </p>
   <p>
-    There’s also a separate form for a <strong>third-party assessment</strong>, which friends, family members, or colleagues can fill out. This lets you compare your self-image with how others perceive you: How do you see yourself, and how do they see you? Where do your views align, and where do they diverge?
+    Zusätzlich gibt es einen separaten Bogen für eine <strong>Fremdeinschätzung</strong>, den Freund*innen, Familienangehörige oder Mitwirkende aus deinem Umfeld ausfüllen können. So hast du die Möglichkeit, dein Selbstbild mit dem Fremdbild zu vergleichen: Wie siehst du dich – und wie sehen andere dich? Wo gibt es Übereinstimmungen, wo Unterschiede?
   </p>
   <p>
-    Before you begin, put yourself in typical scenarios – a night out, a group project, a hobby session, or a discussion. Think about how you react, make decisions, and which of your traits you bring to the table.
+    Bevor du loslegst: Versetze dich in typische Alltagssituationen – beim gemeinsamen Ausgehen, in Freizeitprojekten, bei Hobbys oder in Diskussionen. Überlege, wie du reagierst, Entscheidungen triffst und welche deiner Eigenschaften du dabei einsetzt.
   </p>
   <p>
-    For each statement, choose a number from 0 (“doesn’t apply at all”) to 4 (“fully applies”). Answer honestly and intuitively – the more authentic you are, the more insightful your results will be.
+    Für jede Aussage wählst du eine Zahl von 0 („trifft gar nicht zu“) bis 4 („trifft voll zu“). Antworte ehrlich und aus dem Bauch heraus – je authentischer du bist, desto aussagekräftiger wird dein Ergebnis.
   </p>
   <p>
-    Have fun – and discover your animal-powered strengths! 
+    Viel Spass – und entdecke deine tierisch starken Seiten!
   </p>
 </div>
 
 <div class="user-inputs">
-  <label>Who are you evaluating?</label>
+  <label>Wen bewertest du?</label>
   <div class="radio-group">
-    <label><input type="radio" name="modus" value="self" checked> Myself</label>
-    <label><input type="radio" name="modus" value="other"> Another person</label>
+    <label><input type="radio" name="modus" value="selbst" checked> Mich selbst</label>
+    <label><input type="radio" name="modus" value="fremd"> Eine andere Person</label>
   </div>
 </div>
 
@@ -775,7 +775,7 @@
     type="text" 
     id="name" 
     name="name" 
-    placeholder="your name"
+    placeholder="Dein Name"
     style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; margin-bottom: 1.5rem;"
   />
 
@@ -785,7 +785,7 @@
 
 <!-- 3. Hilfetext darunter -->
   <p class="help-text">
-    Please enter your email address – it is necessary to display your result.
+    Gib bitte deine E-Mail-Adresse ein – sie ist notwendig, um dein Ergebnis anzuzeigen.
   </p>
   
   <!-- 2. Input-Feld -->
@@ -793,22 +793,22 @@
     type="email"
     id="email"
     name="email"
-    placeholder="your@email.ch"
+    placeholder="deine@email.ch"
     required
   />
 </div>
 </div>
 
 <div class="user-inputs">
-  <label for="situation">Which situation are you imagining?</label>
+  <label for="situation">Welche Situation stellst du dir vor?</label>
   <p class="help-text">
-    e.g., "Me in a group of friends," "Me in a sports club with teammates," or "Me at a family gathering"
+    z. B. „Ich in einer Freundesrunde“, „Ich im Sportverein mit Teammitglieder*innen“ oder „Ich beim Familien­treffen“
   </p>
-  <textarea
+<textarea
     id="situation"
     name="situation"
     rows="3"
-    placeholder="Briefly describe your role and situation"
+    placeholder="Beschreibe kurz deine Rolle und Situation"
     required
   ></textarea>
 </div>
@@ -819,11 +819,11 @@
   <form id="fragebogen"></form>
 
   <!-- 🔘 Auswerten-Button (anfangs deaktiviert) -->
-  <button type="submit" form="fragebogen" id="auswertenBtn" disabled>Evaluate</button>
+  <button type="submit" form="fragebogen" id="auswertenBtn" disabled>Auswerten</button>
 
   <!-- 🖨 Ergebnis + Druckbutton -->
   <div id="ergebnis" style="display:none;"></div>
-  <button id="printButton" style="display:none;"> Print</button>
+  <button id="printButton" style="display:none;"> Drucken</button>
 
 <script>
 document.addEventListener("DOMContentLoaded", function () {
@@ -846,247 +846,411 @@ function makeFileName(name) {
       // Array der Fragen
        const questions = [
   {
-    frage: "Question 1: If you're planning a weekend trip with friends, which role do you prefer to take on?",
-    frage_fremd: "Question 1: What role does the person take when planning a weekend trip with friends?",
-    keyword: "Trip",
+    frage: "Frage 1: Wenn du einen Wochenendausflug mit Freund*innen planst, welche Rolle übernimmst du am liebsten?",
+    frage_fremd: "Frage 1: Welche Rolle übernimmt die Person, wenn sie einen Wochenendausflug mit Freund*innen plant?",
+    keyword: "Ausflug",
     answers: {
       A: {
         code: "S1",
-        text: "I like to organize <strong>everything in detail</strong>, book accommodations, and create a schedule.",
-        text_fremd: "The person likes to organize <strong>everything in detail</strong>, book and plan carefully."
+        text: "Ich organisiere gern <strong>alles im Detail</strong>, buche Unterkünfte und erstelle einen Zeitplan.",
+        text_fremd: "Die Person organisiert gern <strong>alles im Detail</strong>, bucht und plant sorgfältig."
       },
       B: {
         code: "S2",
-        text: "I make sure that <strong>everyone is heard</strong> and exchange ideas within the team.",
-        text_fremd: "The person ensures that <strong>everyone is heard</strong> and ideas are shared."
+        text: "Ich achte darauf, dass <strong>jeder gehört</strong> wird, und tausche Ideen im Team aus.",
+        text_fremd: "Die Person sorgt dafür, dass <strong>jeder gehört</strong> wird und Ideen geteilt werden."
       },
       C: {
         code: "R1",
-        text: "I stay <strong>flexible</strong> and adapt the plan spontaneously when needed.",
-        text_fremd: "The person stays <strong>flexible</strong> and adapts plans spontaneously."
+        text: "Ich bleibe <strong>flexibel</strong>, passe den Plan spontan an, wenn etwas dazwischenkommt.",
+        text_fremd: "Die Person bleibt <strong>flexibel</strong> und verändert Pläne spontan."
       },
       D: {
         code: "R2",
-        text: "I bring in <strong>creative</strong> ideas, such as unusual places or activities.",
-        text_fremd: "The person likes to suggest <strong>creative</strong> ideas for special experiences."
-   }
+        text: "Ich bringe <strong>kreative</strong> Vorschläge ein, z. B. ungewöhnliche Orte oder Aktivitäten.",
+        text_fremd: "Die Person macht gerne <strong>kreative</strong> Vorschläge für besondere Erlebnisse."
+      }
     }
   },
   {
-     frage: "Question 2: Your friend gets into a conflict with someone from your group – how do you react?",
-  frage_fremd: "Question 2: How does the person react when a conflict arises among friends?",
-  keyword: "Conflict",
-  answers: {
-    A: {
-      code: "S3",
-      text: "I mediate directly and listen to both sides <strong>carefully</strong> to find a solution.",
-      text_fremd: "The person mediates directly, listens to both sides <strong>carefully</strong>, and seeks consensus."
-    },
-    B: {
-      code: "S4",
-      text: "I stay <strong>neutral</strong> and ask what each person needs before intervening.",
-      text_fremd: "The person remains <strong>neutral</strong> and explores needs before helping."
-    },
-    C: {
-      code: "R3",
-      text: "I ask provocative questions to break up <strong>perspectives</strong> – even if it may cause friction.",
-      text_fremd: "The person asks provocative questions to break up stuck <strong>perspectives</strong>."
-    },
-    D: {
-      code: "R4",
-      text: "I stay calm, speak <strong>thoughtfully</strong>, and try to soothe the atmosphere.",
-      text_fremd: "The person stays calm, speaks <strong>thoughtfully</strong>, and soothes the mood."
-    }
-    }
-  },
-  {
-  frage: "Question 3: What motivates you to really stick with a new hobby or project?",
-  frage_fremd: "Question 3: What motivates the person to start and stick with a new hobby or project?",
-  keyword: "Motivation",
-  answers: {
-    A: {
-      code: "S5",
-      text: "The joy of <strong>learning</strong> and curiosity for new things drives me.",
-      text_fremd: "The person is motivated by the joy of <strong>learning</strong> and curiosity."
-    },
-    B: {
-      code: "S6",
-      text: "I look for a <strong>vision</strong> or goal that inspires and drives me.",
-      text_fremd: "The person needs a clear <strong>vision</strong> or inspiring goal."
-    },
-    C: {
-      code: "R5",
-      text: "I am excited to tackle challenges <strong>strategically</strong> and solve them cleverly.",
-      text_fremd: "The person loves to approach challenges <strong>strategically</strong>."
-    },
-    D: {
-      code: "R6",
-      text: "I want to see fast <strong>results</strong> and invest a lot of energy to move forward.",
-      text_fremd: "The person invests a lot of energy to quickly achieve <strong>results</strong>."
-   }
-    }
-  },
-  {
-  frage: "Question 4: A sudden change of plans throws you off – how do you react?",
-  frage_fremd: "Question 4: How does the person react when plans change at short notice?",
-  keyword: "Change",
-  answers: {
-    A: {
-      code: "S7",
-      text: "I take a moment, stay calm, and <strong>analyze</strong> the new situation.",
-      text_fremd: "The person calmly analyzes the new situation and stays composed."
-    },
-    B: {
-      code: "S8",
-      text: "I look at risks and opportunities, replan, and find <strong>alternatives</strong>.",
-      text_fremd: "The person examines risks, opportunities, and plans <strong>alternatives</strong>."
-    },
-    C: {
-      code: "R7",
-      text: "I react spontaneously and <strong>act</strong> before overthinking.",
-      text_fremd: "The person acts spontaneously and avoids overthinking."
-    },
-    D: {
-      code: "R8",
-      text: "I trust my gut feeling and make quick <strong>decisions</strong>.",
-      text_fremd: "The person trusts their instincts and makes quick <strong>decisions</strong>."
-     }
-    }
-  },
-  {
-   frage: "Question 5: In what kind of environment do you feel most creative?",
-    frage_fremd: "Question 5: In what environment does the person feel most creative?",
-    keyword: "Environment",
+    frage: "Frage 2: Dein*e Freund*in streitet sich mit jemandem aus eurem Freundeskreis – wie reagierst du?",
+    frage_fremd: "Frage 2: Wie reagiert die Person, wenn ein Konflikt zwischen Freund*innen entsteht?",
+    keyword: "Konflikt",
     answers: {
-      A: { code: "S9", text: "A quiet place where I can <strong>think</strong> undisturbed.", text_fremd: "The person needs a quiet place to <strong>think</strong> undisturbed." },
-      B: { code: "S10", text: "An inspiring environment with <strong>others</strong> that fosters exchange.", text_fremd: "The person thrives in an inspiring atmosphere with <strong>others</strong>." },
-      C: { code: "R11", text: "Something <strong>provocative</strong> that breaks conventional thinking.", text_fremd: "The person reacts well to <strong>provocative</strong> stimuli." },
-      D: { code: "R12", text: "A clear structure with firm rules that provides <strong>reliability</strong>.", text_fremd: "The person values clear rules and <strong>reliability</strong>." 
-     }
+      A: {
+        code: "S3",
+        text: "Ich vermittle direkt und höre beiden Seiten <strong>zu</strong>, um eine Lösung zu finden.",
+        text_fremd: "Die Person vermittelt direkt, hört beiden Seiten <strong>zu</strong> und sucht Konsens."
+      },
+      B: {
+        code: "S4",
+        text: "Ich bleibe <strong>neutral</strong> und frage nach, was jeder braucht, bevor ich eingreife.",
+        text_fremd: "Die Person bleibt <strong>neutral</strong> und erkundet Bedürfnisse, bevor sie hilft."
+      },
+      C: {
+        code: "R3",
+        text: "Ich stelle provozierende Fragen, um <strong>Perspektiven</strong> aufzubrechen – auch wenn das anecken kann.",
+        text_fremd: "Die Person stellt provokative Fragen, um festgefahrene Perspektiven aufzubrechen."
+      },
+      D: {
+        code: "R4",
+        text: "Ich bewahre Ruhe, spreche <strong>bedächtig</strong> und versuche, Atmosphäre zu beruhigen.",
+        text_fremd: "Die Person bleibt ruhig, spricht <strong>bedächtig</strong> und beruhigt die Stimmung."
+      }
     }
   },
   {
-    frage: "Question 6: You're facing an uncertain decision – how do you find your way?",
-    frage_fremd: "Question 6: How does the person make decisions in unclear situations?",
-    keyword: "Decision",
+    frage: "Frage 3: Was motiviert dich, ein neues Hobby oder Projekt wirklich durchzuziehen?",
+    frage_fremd: "Frage 3: Was motiviert die Person, ein neues Hobby oder Projekt zu starten und dranzubleiben?",
+    keyword: "Motivation",
     answers: {
-      A: { code: "S11", text: "I discuss with friends and seek <strong>consensus</strong>.", text_fremd: "The person involves friends and seeks <strong>consensus</strong>." },
-      B: { code: "S12", text: "I stick to proven methods and value <strong>consistency</strong>.", text_fremd: "The person relies on proven methods and <strong>consistency</strong>." },
-      C: { code: "R9", text: "I act quickly and <strong>decisively</strong> without hesitation.", text_fremd: "The person acts quickly and <strong>decisively</strong>." },
-      D: { code: "R10", text: "I trust my instincts and follow my <strong>intuition</strong>.", text_fremd: "The person trusts their instincts and <strong>intuition</strong>." 
-     }
+      A: {
+        code: "S5",
+        text: "Der Spass am <strong>Lernen</strong> und die Neugier auf Neues treiben mich an.",
+        text_fremd: "Die Person wird durch den Spass am <strong>Lernen</strong> und Neugier motiviert."
+      },
+      B: {
+        code: "S6",
+        text: "Ich suche eine <strong>Vision</strong> oder ein Ziel, das mich inspiriert und antreibt.",
+        text_fremd: "Die Person braucht eine klare <strong>Vision</strong> oder ein inspirierendes Ziel."
+      },
+      C: {
+        code: "R5",
+        text: "Es reizt mich, <strong>strategisch</strong> vorzugehen und Herausforderungen clever zu meistern.",
+        text_fremd: "Die Person liebt es, <strong>strategisch</strong> Herausforderungen anzugehen."
+      },
+      D: {
+        code: "R6",
+        text: "Ich will schnelle <strong>Ergebnisse</strong> sehen und setze viel Energie ein, um voranzukommen.",
+        text_fremd: "Die Person setzt viel Energie ein, um schnell <strong>Ergebnisse</strong> zu erzielen."
+      }
     }
   },
   {
-    frage: "Question 7: When you go out to eat with friends, what role do you take at the table?",
-    frage_fremd: "Question 7: What role does the person take when dining with friends?",
-    keyword: "Dining",
+    frage: "Frage 4: Ein plötzlicher Planwechsel wirft dich aus der Bahn – wie reagierst du?",
+    frage_fremd: "Frage 4: Wie reagiert die Person, wenn Pläne kurzfristig geändert werden?",
+    keyword: "Veränderung",
     answers: {
-      A: { code: "S13", text: "I like trying new things and suggesting <strong>varied</strong> dishes.", text_fremd: "The person enjoys suggesting <strong>varied</strong> dishes." },
-      B: { code: "S14", text: "I focus on efficient organization and handle <strong>reservations</strong>.", text_fremd: "The person organizes reservations and plans efficiently." },
-      C: { code: "R15", text: "I maintain good mood and support <strong>team spirit</strong> at the table.", text_fremd: "The person fosters good mood and <strong>team spirit</strong>." },
-      D: { code: "R16", text: "I take over <strong>communication</strong> with the service.", text_fremd: "The person handles <strong>communication</strong> with the service." 
-     }
+      A: {
+        code: "S7",
+        text: "Ich nehme mir kurz Zeit, bleibe ruhig und <strong>analysiere</strong> die neue Situation.",
+        text_fremd: "Die Person analysiert ruhig die neue Lage und bleibt gelassen."
+      },
+      B: {
+        code: "S8",
+        text: "Ich schaue auf Risiken und Chancen, plane um und finde <strong>Alternativen</strong>.",
+        text_fremd: "Die Person prüft Risiken, Chancen und plant <strong>Alternativen</strong>."
+      },
+      C: {
+        code: "R7",
+        text: "Ich reagiere spontan und <strong>handle</strong>, bevor ich lange grüble.",
+        text_fremd: "Die Person handelt oft spontan und vermeidet langes Grübeln."
+      },
+      D: {
+        code: "R8",
+        text: "Ich vertraue meinem Bauchgefühl und treffe schnelle <strong>Entscheidungen</strong>.",
+        text_fremd: "Die Person vertraut ihrem Instinkt und trifft schnelle <strong>Entscheidungen</strong>."
+      }
     }
   },
   {
-    frage: "Question 8: You’re responsible for a shared project at home – how do you handle responsibility?",
-    frage_fremd: "Question 8: How does the person handle responsibility in a shared project?",
-    keyword: "Responsibility",
+    frage: "Frage 5: In welcher Umgebung fühlst du dich am wohlsten, um kreativ zu sein?",
+    frage_fremd: "Frage 5: In welcher Umgebung fühlt sich die Person am wohlsten für kreative Ideen?",
+    keyword: "Umgebung",
     answers: {
-      A: { code: "S15", text: "I support in the background and ensure <strong>structure</strong>.", text_fremd: "The person supports in the background and ensures <strong>structure</strong>." },
-      B: { code: "S16", text: "I make clear decisions and implement my <strong>ideas</strong>.", text_fremd: "The person makes decisions and implements <strong>ideas</strong>." },
-      C: { code: "R13", text: "I plan strategically and act <strong>goal-oriented</strong>.", text_fremd: "The person plans strategically and acts <strong>goal-oriented</strong>." },
-      D: { code: "R14", text: "I take everything into my own hands and rely on my <strong>competence</strong>.", text_fremd: "The person handles everything and trusts their <strong>competence</strong>." 
-     }
+      A: {
+        code: "S9",
+        text: "Ein ruhiger Ort, wo ich ungestört <strong>nachdenken</strong> kann.",
+        text_fremd: "Die Person braucht einen ruhigen Ort, um ungestört <strong>nachdenken</strong> zu können."
+      },
+      B: {
+        code: "S10",
+        text: "Ein inspirierendes Umfeld mit <strong>anderen</strong>, das Austausch fördert.",
+        text_fremd: "Die Person blüht auf in inspirierender Atmosphäre mit <strong>anderen</strong>."
+      },
+      C: {
+        code: "R11",
+        text: "Etwas <strong>Provokantes</strong>, das gewohnte Denkmuster aufbricht.",
+        text_fremd: "Die Person reagiert gut auf <strong>provokante</strong> Impulse."
+      },
+      D: {
+        code: "R12",
+        text: "Ein klarer Rahmen mit festen Regeln, der <strong>Zuverlässigkeit</strong> schafft.",
+        text_fremd: "Die Person schätzt klare Regeln und <strong>Zuverlässigkeit</strong>."
+      }
     }
   },
   {
-    frage: "Question 9: How do you react when someone from your friend circle criticizes you?",
-    frage_fremd: "Question 9: How does the person react to criticism from friends?",
-    keyword: "Criticism",
+    frage: "Frage 6: Du stehst vor einer ungewissen Entscheidung – wie findest du deinen Weg?",
+    frage_fremd: "Frage 6: Wie trifft die Person Entscheidungen in unklaren Situationen?",
+    keyword: "Entscheidung",
     answers: {
-      A: { code: "S17", text: "I listen openly and think about how to <strong>improve</strong>.", text_fremd: "The person listens openly and considers how to <strong>improve</strong>." },
-      B: { code: "S18", text: "I calmly explain my point and stay <strong>confident</strong>.", text_fremd: "The person explains calmly and remains <strong>confident</strong>." },
-      C: { code: "R19", text: "I deeply reflect and learn from <strong>constructive</strong> criticism.", text_fremd: "The person deeply reflects and learns from <strong>constructive</strong> criticism." },
-      D: { code: "R20", text: "I accept feedback and use it as an opportunity for <strong>growth</strong>.", text_fremd: "The person uses feedback as a chance for <strong>growth</strong>." 
-     }
+      A: {
+        code: "S11",
+        text: "Ich diskutiere mit Freund*innen und suche nach <strong>Konsens</strong>.",
+        text_fremd: "Die Person bezieht Freund*innen ein und sucht <strong>Konsens</strong>."
+      },
+      B: {
+        code: "S12",
+        text: "Ich halte mich an Bewährtes und setze auf <strong>Beständigkeit</strong>.",
+        text_fremd: "Die Person setzt auf Bewährtes und <strong>Beständigkeit</strong>."
+      },
+      C: {
+        code: "R9",
+        text: "Ich handele schnell und <strong>entschlossen</strong>, ohne lange zu zögern.",
+        text_fremd: "Die Person handelt schnell und <strong>entschlossen</strong>."
+      },
+      D: {
+        code: "R10",
+        text: "Ich folge meinem Bauchgefühl und vertraue auf meine <strong>Intuition</strong>.",
+        text_fremd: "Die Person vertraut ihrem Bauchgefühl und ihrer <strong>Intuition</strong>."
+      }
     }
   },
   {
-    frage: "Question 10: What role do you take when traveling with friends?",
-    frage_fremd: "Question 10: What role does the person take when traveling?",
-    keyword: "Travel",
+    frage: "Frage 7: Wenn du mit Freund*innen essen gehst, welche Rolle übernimmst du am Tisch?",
+    frage_fremd: "Frage 7: Welche Rolle übernimmt die Person, wenn sie mit Freund*innen essen geht?",
+    keyword: "Essen",
     answers: {
-      A: { code: "S19", text: "I take the <strong>lead</strong> and plan the route and daily activities.", text_fremd: "The person takes the <strong>lead</strong> and plans the program." },
-      B: { code: "S20", text: "I handle details and ensure everyone's <strong>comfort</strong>.", text_fremd: "The person handles details and ensures <strong>comfort</strong>." },
-      C: { code: "R21", text: "I bring <strong>visions</strong> and dream of unforgettable moments.", text_fremd: "The person brings <strong>visions</strong> for highlights." },
-      D: { code: "R22", text: "I stick to classic destinations and focus on <strong>safety</strong>.", text_fremd: "The person prefers classics and <strong>safety</strong>." 
-     }
+      A: {
+        code: "S13",
+        text: "Ich probiere gerne Neues und schlage <strong>abwechslungsreiche</strong> Gerichte vor.",
+        text_fremd: "Die Person schlägt gern <strong>abwechslungsreiche</strong> Gerichte vor."
+      },
+      B: {
+        code: "S14",
+        text: "Ich achte auf effiziente Abläufe und <strong>organisiere</strong> Reservierungen.",
+        text_fremd: "Die Person organisiert Reservierungen und plant effizient."
+      },
+      C: {
+        code: "R15",
+        text: "Ich achte auf die Stimmung und halte <strong>Teamgeist</strong> am Tisch hoch.",
+        text_fremd: "Die Person sorgt für gute Stimmung und <strong>Teamgeist</strong>."
+      },
+      D: {
+        code: "R16",
+        text: "Ich übernehme gern die <strong>Kommunikation</strong> mit dem Service.",
+        text_fremd: "Die Person kommuniziert gerne direkt mit dem Service."
+      }
     }
   },
   {
-    frage: "Question 11: How do you plan your long-term goals, such as a world trip or major project?",
-    frage_fremd: "Question 11: How does the person approach planning long-term goals?",
-    keyword: "Planning",
+    frage: "Frage 8: Du kümmerst dich um ein gemeinsames Projekt zu Hause – wie gehst du mit Verantwortung um?",
+    frage_fremd: "Frage 8: Wie übernimmt die Person Verantwortung in einem gemeinsamen Projekt?",
+    keyword: "Verantwortung",
     answers: {
-      A: { code: "S21", text: "I set ambitious <strong>milestones</strong> and work towards them.", text_fremd: "The person sets <strong>milestones</strong> and works towards them." },
-      B: { code: "S22", text: "I stay <strong>flexible</strong> and adjust goals to new circumstances.", text_fremd: "The person stays <strong>flexible</strong> and adapts goals." },
-      C: { code: "R17", text: "I maintain an <strong>overview</strong> and formulate clear visions.", text_fremd: "The person keeps an <strong>overview</strong> and formulates visions." },
-      D: { code: "R18", text: "I proceed cautiously and don't let stress <strong>overwhelm</strong> me.", text_fremd: "The person proceeds cautiously and stays stress-resistant." 
-     }
+      A: {
+        code: "S15",
+        text: "Ich unterstütze im Hintergrund und sorge für <strong>Struktur</strong>.",
+        text_fremd: "Die Person hilft im Hintergrund und sorgt für <strong>Struktur</strong>."
+      },
+      B: {
+        code: "S16",
+        text: "Ich treffe klare Entscheidungen und setze meine <strong>Ideen</strong> durch.",
+        text_fremd: "Die Person trifft Entscheidungen und setzt ihre <strong>Ideen</strong> durch."
+      },
+      C: {
+        code: "R13",
+        text: "Ich plane strategisch und handle <strong>zielorientiert</strong>.",
+        text_fremd: "Die Person plant strategisch und handelt <strong>zielorientiert</strong>."
+      },
+      D: {
+        code: "R14",
+        text: "Ich übernehme alles selbst und vertraue auf meine <strong>Kompetenz</strong>.",
+        text_fremd: "Die Person übernimmt alles selbst und vertraut ihrer <strong>Kompetenz</strong>."
+      }
     }
   },
   {
-    frage: "Question 12: How do you react under high pressure (e.g., deadline, exam)?",
-    frage_fremd: "Question 12: How does the person react under high pressure?",
-    keyword: "Pressure",
+    frage: "Frage 9: Wie reagierst du, wenn dich jemand in deinem Freundeskreis kritisiert?",
+    frage_fremd: "Frage 9: Wie reagiert die Person, wenn sie Kritik aus dem Freundeskreis erhält?",
+    keyword: "Kritik",
     answers: {
-      A: { code: "S23", text: "I stay calm, structure my tasks, and keep my <strong>focus</strong>.", text_fremd: "The person stays calm, structured, and focused." },
-      B: { code: "S24", text: "I withdraw and work <strong>concentrated</strong> alone.", text_fremd: "The person withdraws and works <strong>concentrated</strong>." },
-      C: { code: "R25", text: "I work systematically, prioritize, and avoid <strong>mistakes</strong>.", text_fremd: "The person works systematically, prioritizes, and avoids mistakes." },
-      D: { code: "R26", text: "I speed up and deliver top performance under <strong>maximum pressure</strong>.", text_fremd: "The person speeds up and performs under <strong>maximum pressure</strong>." 
-     }
+      A: {
+        code: "S17",
+        text: "Ich höre offen zu und überlege, wie ich mich <strong>verbessern</strong> kann.",
+        text_fremd: "Die Person hört offen zu und überlegt, wie sie sich <strong>verbessern</strong> kann."
+      },
+      B: {
+        code: "S18",
+        text: "Ich erkläre meinen Standpunkt ruhig und bleibe <strong>selbstbewusst</strong>.",
+        text_fremd: "Die Person erklärt ruhig ihren Standpunkt und bleibt <strong>selbstbewusst</strong>."
+      },
+      C: {
+        code: "R19",
+        text: "Ich reflektiere tief und lerne aus <strong>konstruktiver</strong> Kritik.",
+        text_fremd: "Die Person reflektiert tief und lernt aus <strong>konstruktiver</strong> Kritik."
+      },
+      D: {
+        code: "R20",
+        text: "Ich nehme Feedback an und nutze es als Chance für <strong>Wachstum</strong>.",
+        text_fremd: "Die Person nutzt Feedback als Chance für persönlichen <strong>Wachstum</strong>."
+      }
     }
   },
   {
-    frage: "Question 13: What is your most reliable strength in everyday life?",
-    frage_fremd: "Question 13: What strength does the person reliably show in everyday life?",
-    keyword: "Strength",
+    frage: "Frage 10: Welche Rolle nimmst du ein, wenn ihr zusammen verreist?",
+    frage_fremd: "Frage 10: Welche Rolle übernimmt die Person, wenn sie verreist?",
+    keyword: "Reise",
     answers: {
-      A: { code: "S25", text: "My <strong>creativity</strong> helps me find new solutions.", text_fremd: "The person shows <strong>creativity</strong> in new situations." },
-      B: { code: "S26", text: "My <strong>endurance</strong> helps me overcome challenges.", text_fremd: "The person shows great <strong>endurance</strong> and perseverance." },
-      C: { code: "R23", text: "My <strong>adaptability</strong> keeps me capable in any situation.", text_fremd: "The person adapts quickly and stays capable." },
-      D: { code: "R24", text: "My <strong>cooperation skills</strong> strengthen any community.", text_fremd: "The person fosters community through <strong>cooperation</strong>." 
-     }
+      A: {
+        code: "S19",
+        text: "Ich übernehme die <strong>Führung</strong>, plane Route und Tagesprogramm.",
+        text_fremd: "Die Person übernimmt die <strong>Führung</strong> und plant Programm."
+      },
+      B: {
+        code: "S20",
+        text: "Ich kümmere mich um Details und sorge für <strong>Komfort</strong> aller.",
+        text_fremd: "Die Person kümmert sich um Details und den <strong>Komfort</strong>."
+      },
+      C: {
+        code: "R21",
+        text: "Ich bringe <strong>Visionen</strong> ein, träume von unvergesslichen Momenten.",
+        text_fremd: "Die Person bringt <strong>Visionen</strong> für Highlights ein."
+      },
+      D: {
+        code: "R22",
+        text: "Ich halte mich an bewährte Klassiker und achte auf <strong>Sicherheit</strong>.",
+        text_fremd: "Die Person bevorzugt bewährte Klassiker und <strong>Sicherheit</strong>."
+      }
     }
   },
   {
-    frage: "Question 14: Which combination of traits best describes you?",
-    frage_fremd: "Question 14: Which combination of traits fits the person?",
+    frage: "Frage 11: Wie planst du deine langfristigen Ziele – z. B. eine Weltreise oder ein grosses Projekt?",
+    frage_fremd: "Frage 11: Wie geht die Person bei der Planung langfristiger Ziele vor?",
+    keyword: "Planung",
+    answers: {
+      A: {
+        code: "S21",
+        text: "Ich setze mir ambitionierte <strong>Meilensteine</strong> und arbeite fokussiert darauf hin.",
+        text_fremd: "Die Person setzt sich Meilensteine und arbeitet fokussiert darauf hin."
+      },
+      B: {
+        code: "S22",
+        text: "Ich bleibe <strong>flexibel</strong>, passe Ziele an neue Umstände an.",
+        text_fremd: "Die Person bleibt flexibel und passt Ziele an Umstände an."
+      },
+      C: {
+        code: "R17",
+        text: "Ich behalte den <strong>Überblick</strong> und formuliere klare Visionen.",
+        text_fremd: "Die Person behält den Überblick und formuliert Visionen."
+      },
+      D: {
+        code: "R18",
+        text: "Ich gehe bedächtig vor und lasse mich nicht von Stress <strong>überwältigen</strong>.",
+        text_fremd: "Die Person geht bedächtig vor und bleibt stressresistent."
+      }
+    }
+  },
+  {
+    frage: "Frage 12: Du stehst unter hohem Druck (z. B. Abgabefrist, Prüfung) – wie reagierst du?",
+    frage_fremd: "Frage 12: Wie reagiert die Person unter hohem Druck?",
+    keyword: "Druck",
+    answers: {
+      A: {
+        code: "S23",
+        text: "Ich bleibe ruhig, strukturiere meine Aufgaben und behalte den <strong>Fokus</strong>.",
+        text_fremd: "Die Person bleibt ruhig, strukturiert und fokussiert."
+      },
+      B: {
+        code: "S24",
+        text: "Ich ziehe mich zurück und arbeite <strong>konzentriert</strong> allein.",
+        text_fremd: "Die Person zieht sich zurück und arbeitet <strong>konzentriert</strong>."
+      },
+      C: {
+        code: "R25",
+        text: "Ich arbeite systematisch, setze Prioritäten und vermeide <strong>Fehler</strong>.",
+        text_fremd: "Die Person arbeitet systematisch, setzt Prioritäten und vermeidet Fehler."
+      },
+      D: {
+        code: "R26",
+        text: "Ich beschleunige das Tempo und zeige Höchstleistung unter <strong>Maximaldruck</strong>.",
+        text_fremd: "Die Person beschleunigt und zeigt Leistung unter <strong>Maximaldruck</strong>."
+      }
+    }
+  },
+  {
+    frage: "Frage 13: Welche Eigenschaft ist deine verlässlichste Stärke im Leben?",
+    frage_fremd: "Frage 13: Welche Eigenschaft zeigt die Person verlässlich im Alltag?",
+    keyword: "Stärke",
+    answers: {
+      A: {
+        code: "S25",
+        text: "Meine <strong>Kreativität</strong> hilft mir, immer neue Lösungen zu finden.",
+        text_fremd: "Die Person zeigt viel <strong>Kreativität</strong> in neuen Situationen."
+      },
+      B: {
+        code: "S26",
+        text: "Meine <strong>Ausdauer</strong> lässt mich Herausforderungen durchstehen.",
+        text_fremd: "Die Person hat grosse <strong>Ausdauer</strong> und Durchhaltevermögen."
+      },
+      C: {
+        code: "R23",
+        text: "Meine <strong>Anpassungsfähigkeit</strong> macht mich in jeder Lage handlungsfähig.",
+        text_fremd: "Die Person passt sich schnell an und bleibt handlungsfähig."
+      },
+      D: {
+        code: "R24",
+        text: "Meine <strong>Kooperationsfähigkeit</strong> stärkt jedes Gemeinschaftsgefühl.",
+        text_fremd: "Die Person fördert Gemeinschaft durch <strong>Kooperation</strong>."
+      }
+    }
+  },
+  {
+    frage: "Frage 14: Welche Kombination dieser vier Eigenschaften trifft am besten auf dich zu?",
+    frage_fremd: "Frage 14: Welche Kombination dieser Eigenschaften passt zur Person?",
     keyword: "Mix",
     answers: {
-      A: { code: "C1", text: "Visionary, adaptable, creative, and energetic.", text_fremd: "Visionary, adaptable, creative, and energetic fits." },
-      B: { code: "C2", text: "Robust, independent, decisive, and focused.", text_fremd: "Robust, independent, decisive, and focused fits." },
-      C: { code: "C3", text: "Thoughtful, wise, strategic, and careful.", text_fremd: "Thoughtful, wise, strategic, and careful fits." },
-      D: { code: "C4", text: "Spontaneous, provocative, social, and curious.", text_fremd: "Spontaneous, provocative, social, and curious fits." 
-    }
+      A: {
+        code: "C1",
+        text: "Visionär, anpassungsfähig, kreativ und energiegeladen.",
+        text_fremd: "Visionär, anpassungsfähig, kreativ und energiegeladen passt."
+      },
+      B: {
+        code: "C2",
+        text: "Robust, unabhängig, entschlossen und fokussiert.",
+        text_fremd: "Robust, unabhängig, entschlossen und fokussiert passt."
+      },
+      C: {
+        code: "C3",
+        text: "Bedächtig, weise, strategisch und sorgfältig.",
+        text_fremd: "Bedächtig, weise, strategisch und sorgfältig passt."
+      },
+      D: {
+        code: "C4",
+        text: "Spontan, provokant, sozial und neugierig.",
+        text_fremd: "Spontan, provokant, sozial und neugierig passt."
+      }
     }
   },
   {
-    frage: "Question 15: In which area would you like to grow personally?",
-    frage_fremd: "Question 15: In which area could the person develop?",
-    keyword: "Growth",
+    frage: "Frage 15: In welchem Bereich möchtest du dich persönlich weiterentwickeln?",
+    frage_fremd: "Frage 15: In welchem Bereich könnte sich die Person weiterentwickeln?",
+    keyword: "Weiterentwicklung",
     answers: {
-      A: { code: "C1", text: "Become more relaxed and want to <strong>control</strong> less.", text_fremd: "The person could learn to <strong>control</strong> less." },
-      B: { code: "C2", text: "Be more patient in handling my <strong>impulses</strong>.", text_fremd: "The person could be more patient with <strong>impulses</strong>." },
-      C: { code: "C3", text: "Make braver decisions and avoid <strong>hesitation</strong>.", text_fremd: "The person could be braver and hesitate less." },
-      D: { code: "C4", text: "Better <strong>channel</strong> my spontaneity.", text_fremd: "The person could better <strong>channel</strong> their spontaneity." 
-     }
+      A: {
+        code: "C1",
+        text: "Gelassener werden und weniger <strong>kontrollieren</strong> wollen.",
+        text_fremd: "Die Person könnte lernen, weniger zu <strong>kontrollieren</strong>."
+      },
+      B: {
+        code: "C2",
+        text: "Geduldiger mit meinen <strong>Impulsen</strong> umgehen.",
+        text_fremd: "Die Person könnte geduldiger mit <strong>Impulsen</strong> sein."
+      },
+      C: {
+        code: "C3",
+        text: "Mutiger Entscheidungen treffen und nicht zu lange <strong>zögern</strong>.",
+        text_fremd: "Die Person könnte mutiger sein und weniger <strong>zögern</strong>."
+      },
+      D: {
+        code: "C4",
+        text: "Meine Spontaneität besser <strong>kanalisieren</strong>.",
+        text_fremd: "Die Person könnte ihre Spontaneität besser <strong>kanalisieren</strong>."
+      }
     }
   }
 ];
-
 
 
   // 1) renderQuestions-Funktion
@@ -1140,252 +1304,271 @@ function makeFileName(name) {
 
       // Definiere hier zuerst das Mapping der Tierdaten:
       const animalProperties = {
-        "Ant": {
-  strengths: [
-    "industrious", "loyal", "committed", "territorial",
-    "instinctive", "busy", "hard-working", "focused on the moment"
+        "Ameise": {
+          staerken: [
+            "fleissig", "loyal", "engagiert", "gebietsorientiert",
+            "instinktiv", "geschäftig", "hart arbeitend", "auf den moment fokussiert"
+          ],
+          schwaechen: [
+            "empfindsam", "denkend", "logisch", "entscheidungsfreudig",
+            "individualistisch", "selbstbewusst", "visionär", "reflektierend"
+          ]
+        },
+        "Biene": {
+          staerken: [
+            "fleissig", "teamorientiert", "kommunikativ", "gebietsorientiert",
+            "wissend", "hart arbeitend", "kooperativ", "sozial", "organisiert",
+            "intelligent", "loyal", "fürsorglich", "aggressiv"
+          ],
+          schwaechen: [
+            "sich selbst bewusst", "individualistisch", "leichtgläubig",
+            "politisch", "reflektierend", "langsam"
+          ]
+        },
+        "Chamäleon": {
+          staerken: [
+            "doppelzüngig", "schlau", "manipulativ", "schwach",
+            "politisch", "intelligent"
+          ],
+          schwaechen: [
+            "treu", "vertrauenswürdig", "konsistent", "zuversichtlich",
+            "herausfordernd", "handlungsorientiert"
+          ]
+        },
+        "Hund": {
+          staerken: [
+            "treu", "vertrauensvoll", "begeistert", "ungestüm",
+            "leichtgläubig", "energiegeladen", "zuverlässig", "vorhersehbar",
+            "glücklich", "spielerisch", "produktiv", "vertrauenswürdig"
+          ],
+          schwaechen: [
+            "sorgfältig", "ernst", "nachdenklich", "denkend", "schlau"
+          ]
+        },
+        "Adler": {
+          staerken: [
+            "visionär", "stark", "fokussiert", "inspirierend", "zuversichtlich",
+            "intelligent", "produktiv", "entschlussfreudig", "ausgeglichen",
+            "scharf", "handlungsorientiert", "offen", "vertrauenswürdig", "intuitiv",
+            "aggressiv", "verantwortlich", "holistisch", "extravertiert", "respektiert"
+          ],
+          schwaechen: [
+            "zögernd", "emotional", "schwach", "zurückgezogen", "schüchtern", "langsam"
+          ]
+        },
+        "Katze": {
+          staerken: [
+            "individualistisch", "eifrig", "distanziert", "eitel",
+            "egoistisch", "frustrierend", "arrogant", "eingebildet"
+          ],
+          schwaechen: [
+            "kontaktfreudig", "freundlich", "fürsorglich", "teamorientiert",
+            "gemeinschaftsorientiert", "interessant"
+          ]
+        },
+        "Gibbon": {
+          staerken: [
+            "fröhlich", "spielerisch", "lebhaft", "kontaktfreudig", "cool",
+            "begeistert", "lustig", "interessant", "rebellisch"
+          ],
+          schwaechen: [
+            "vorsichtig", "ernst", "produktiv", "zukunftsorientiert", "fokussiert"
+          ]
+        },
+        "Hyäne": {
+          staerken: [
+            "aggressiv", "intrigant", "kontrollierend", "manipulativ",
+            "teamorientiert", "stark", "politisch", "opportunistisch"
+          ],
+          schwaechen: [
+            "vertrauenswürdig", "fürsorglich", "rücksichtsvoll", "intuitiv", "schüchtern"
+          ]
+        },
+        "Insekt_nützlich": {
+  "staerken": [
+    "unterstützend", 
+    "einfallsreich", 
+    "zukunftsorientiert", 
+    "teamorientiert", 
+    "hilfreich", 
+    "produktiv", 
+    "positiv", 
+    "vorausschauend"
   ],
-  weaknesses: [
-    "sensitive", "thoughtful", "logical", "decisive",
-    "individualistic", "self-confident", "visionary", "reflective"
+  "schwaechen": [
+    "zögerlich", 
+    "langsam", 
+    "überangepasst", 
+    "wenig sichtbar", 
+    "emotionsfern"
   ]
 },
-"Bee": {
-  strengths: [
-    "industrious", "team-oriented", "communicative", "territorial",
-    "knowledgeable", "hard-working", "cooperative", "social", "organized",
-    "intelligent", "loyal", "caring", "aggressive"
+"Insekt_lästig": {
+  "staerken": [
+    "allgegenwärtig", 
+    "eigennützig", 
+    "unberechenbar", 
+    "durchsetzungsstark", 
+    "ausdauernd", 
+    "resistent"
   ],
-  weaknesses: [
-    "self-aware", "individualistic", "gullible",
-    "political", "reflective", "slow"
+  "schwaechen": [
+    "egoistisch", 
+    "nützlich", 
+    "fürsorglich", 
+    "produktiv", 
+    "bescheiden", 
+    "vertrauenswürdig"
   ]
-},
-"Chameleon": {
-  strengths: [
-    "duplicitous", "clever", "manipulative", "weak",
-    "political", "intelligent"
-  ],
-  weaknesses: [
-    "loyal", "trustworthy", "consistent", "confident",
-    "challenging", "action-oriented"
-  ]
-},
-"Dog": {
-  strengths: [
-    "loyal", "trustful", "enthusiastic", "impulsive",
-    "gullible", "energetic", "reliable", "predictable",
-    "happy", "playful", "productive", "trustworthy"
-  ],
-  weaknesses: [
-    "careful", "serious", "thoughtful", "thinking", "clever"
-  ]
-},
-"Eagle": {
-  strengths: [
-    "visionary", "strong", "focused", "inspiring", "confident",
-    "intelligent", "productive", "decisive", "balanced",
-    "sharp", "action-oriented", "open", "trustworthy", "intuitive",
-    "aggressive", "responsible", "holistic", "extroverted", "respected"
-  ],
-  weaknesses: [
-    "hesitant", "emotional", "weak", "withdrawn", "shy", "slow"
-  ]
-},
-"Cat": {
-  strengths: [
-    "individualistic", "eager", "distant", "vain",
-    "selfish", "frustrating", "arrogant", "conceited"
-  ],
-  weaknesses: [
-    "sociable", "friendly", "caring", "team-oriented",
-    "community-oriented", "interesting"
-  ]
-},
-"Gibbon": {
-  strengths: [
-    "cheerful", "playful", "lively", "sociable", "cool",
-    "enthusiastic", "funny", "interesting", "rebellious"
-  ],
-  weaknesses: [
-    "cautious", "serious", "productive", "future-oriented", "focused"
-  ]
-},
-"Hyena": {
-  strengths: [
-    "aggressive", "scheming", "controlling", "manipulative",
-    "team-oriented", "strong", "political", "opportunistic"
-  ],
-  weaknesses: [
-    "trustworthy", "caring", "considerate", "intuitive", "shy"
-  ]
-},
-"Useful_Insect": {
-  strengths: [
-    "supportive", "inventive", "future-oriented", "team-oriented",
-    "helpful", "productive", "positive", "forward-looking"
-  ],
-  weaknesses: [
-    "hesitant", "slow", "over-adapted", "barely visible", "emotionless"
-  ]
-},
-"Annoying_Insect": {
-  strengths: [
-    "omnipresent", "self-serving", "unpredictable", "assertive",
-    "persistent", "resistant"
-  ],
-  weaknesses: [
-    "selfish", "useful", "caring", "productive", "modest", "trustworthy"
-  ]
-},
-"Jackal": {
-  strengths: [
-    "territorial", "defensive", "social", "aggressive",
-    "controlling", "lively", "jealous", "joyful", "loyal", "caring"
-  ],
-  weaknesses: [
-    "patient", "tolerant", "shy", "withdrawn", "caring"
-  ]
-},
-"Child": {
-  strengths: [
-    "naive", "playful", "energetic", "motivated", "sacrificial", "enthusiastic", "youthful"
-  ],
-  weaknesses: [
-    "experienced", "reliable", "knowledgeable", "tough", "clever"
-  ]
-},
-"Lion": {
-  strengths: [
-    "strong", "power-oriented", "aggressive", "controlling",
-    "territorial", "lazy", "self-serving", "manipulative", "confident"
-  ],
-  weaknesses: [
-    "committed", "industrious", "caring", "shy", "emotional"
-  ]
-},
-"Mouse": {
-  strengths: [
-    "eager", "productive", "economical", "reliable", "enthusiastic",
-    "invisible", "busy", "individualistic", "intelligent"
-  ],
-  weaknesses: [
-    "lazy", "extroverted", "self-serving", "aggressive", "emotional"
-  ]
-},
-"Parasite": {
-  strengths: [
-    "lazy", "parasitic", "dependent", "self-serving", "invisible"
-  ],
-  weaknesses: [
-    "community-oriented", "productive", "friendly", "considerate", "useful"
-  ]
-},
-"Owl": {
-  strengths: [
-    "wise", "committed", "helpful", "respected", "knowledgeable",
-    "logical", "sharp", "confident", "calm", "community-oriented"
-  ],
-  weaknesses: [
-    "lazy", "extroverted", "egocentric", "ambitious", "aggressive"
-  ]
-},
-"Piranha": {
-  strengths: [
-    "aggressive", "predatory", "dangerous", "selfish", "frustrating",
-    "swarming", "self-serving"
-  ],
-  weaknesses: [
-    "friendly", "trustworthy", "accessible", "happy", "trustful",
-    "sincere", "individualistic", "forward-looking"
-  ]
-},
-"Oak": {
-  strengths: [
-    "knowledgeable", "decisive", "intelligent", "experienced",
-    "stimulating", "inspiring", "enthusiastic", "parent-like", "reliable",
-    "philanthropic", "accessible", "rare"
-  ],
-  weaknesses: [
-    "selfish", "disinterested", "lazy", "emotional", "aggressive"
-  ]
-},
-"Rattlesnake": {
-  strengths: [
-    "political", "cunning", "defensive", "reactive", "insecure", "loud",
-    "duplicitous", "divisive", "survivor", "adapted to harsh environments"
-  ],
-  weaknesses: [
-    "trustworthy", "sincere", "loyal", "trustful", "happy",
-    "sociable", "inviting"
-  ]
-},
-"Sloth": {
-  strengths: [
-    "slow", "tired", "minimalistic", "submissive", "lazy"
-  ],
-  weaknesses: [
-    "sociable", "eager", "enthusiastic", "productive", "busy",
-    "adaptable", "community-oriented", "useful"
-  ]
-},
-"Dinosaur": {
-  strengths: [
-    "tired", "pessimistic", "change-averse", "xenophobic", "withdrawn",
-    "battle-tested", "tough", "negative", "reflective", "nostalgic", "problematic"
-  ],
-  weaknesses: [
-    "visionary", "adaptable", "cooperative", "open", "adjusted", "sharp-minded",
-    "community-oriented", "opportunistic", "youthful", "social"
-  ]
-},
-"Unicorn": {
-  strengths: [
-    "perfect", "honest", "arrogant", "unapproachable", "ambitious",
-    "frustrating", "insecure", "controlling", "dangerous", "inconsistent", "nostalgic"
-  ],
-  weaknesses: [
-    "realistic", "self-confident", "open", "stimulating", "trustworthy",
-    "modest", "honest", "forward-looking", "motivating"
-  ]
-},
-"Vulture": {
-  strengths: [
-    "mean", "adapted", "scavenging", "egocentric", "dangerous", "opportunistic",
-    "political", "competitive", "clever", "patient"
-  ],
-  weaknesses: [
-    "benevolent", "trustworthy", "happy", "team-oriented", "brave",
-    "open", "pleasant", "social"
-  ]
-},
-"Whale": {
-  strengths: [
-    "intelligent", "inspiring", "knowledgeable", "powerful", "social",
-    "community-oriented", "self-limiting", "accident-prone", "reserved",
-    "gentle", "endangered"
-  ],
-  weaknesses: [
-    "adaptable", "aggressive", "lazy", "arrogant", "dangerous", "manipulative"
-  ]
-},
-"Hybrid": {
-  strengths: [
-    "arrogant", "ambitious", "busy", "extroverted", "educated", "verbose",
-    "selfish", "beautiful", "fashionable", "competent"
-  ],
-  weaknesses: [
-    "experienced", "trustworthy", "tolerant", "patient", "caring", "thorough", "adaptable"
-  ]
-},
-"Yak": {
-  strengths: [
-    "stormy", "enthusiastic", "tactical", "friendly", "frustrating", "cheerful",
-    "playful", "energetic", "social", "happy", "focused"
-  ],
-  weaknesses: [
-    "cautious", "patient", "experienced", "considerate", "reserved", "modest",
-    "gentle", "slow", "strategic", "self-confident", "intelligent"
+        },
+        "Schakal": {
+          staerken: [
+            "gebietsorientiert", "verteidigungseifrig", "sozial", "aggressiv",
+            "kontrollierend", "lebhaft", "eifersüchtig", "lebenslustig", "loyal", "fürsorglich"
+          ],
+          schwaechen: [
+            "geduldig", "tolerant", "schüchtern", "zurückgezogen", "fürsorglich"
+          ]
+        },
+        "Kind": {
+          staerken: [
+            "naiv", "verspielt", "energisch", "motiviert", "entbehrlich", "begeistert", "jugendlich"
+          ],
+          schwaechen: [
+            "erfahren", "zuverlässig", "kenntnisreich", "hart im Nehmen", "pfiffig"
+          ]
+        },
+        "Löwe": {
+          staerken: [
+            "stark", "machtorientiert", "aggressiv", "kontrollierend",
+            "gebietsorientiert", "faul", "eigennützig", "manipulativ", "zuversichtlich"
+          ],
+          schwaechen: [
+            "engagiert", "fleissig", "fürsorglich", "schüchtern", "emotional"
+          ]
+        },
+        "Maus": {
+          staerken: [
+            "eifrig", "produktiv", "wirtschaftlich", "zuverlässig", "begeistert",
+            "unsichtbar", "beschäftigt", "individualistisch", "intelligent"
+          ],
+          schwaechen: [
+            "faul", "extrovertiert", "eigennützig", "aggressiv", "emotional"
+          ]
+        },
+        "Parasit": {
+          staerken: [
+            "faul", "parasitär", "abhängig", "eigennützig", "unsichtbar"
+          ],
+          schwaechen: [
+            "gemeinschaftsorientiert", "produktiv", "freundlich", "rücksichtsvoll", "nützlich"
+          ]
+        },
+        "Eule": {
+          staerken: [
+            "weise", "engagiert", "hilfsbereit", "respektiert", "kenntnisreich",
+            "logisch", "scharf", "zuversichtlich", "ruhig", "gemeinschaftsorientiert"
+          ],
+          schwaechen: [
+            "faul", "extrovertiert", "egozentrisch", "ehrgeizig", "aggressiv"
+          ]
+        },
+        "Piranha": {
+          staerken: [
+            "aggressiv", "räuberisch", "gefährlich", "egoistisch", "frustrierend",
+            "ausschwärmend", "eigennützig"
+          ],
+          schwaechen: [
+            "freundlich", "vertrauenswürdig", "zugänglich", "glücklich", "vertrauensvoll",
+            "aufrichtig", "individualistisch", "vorausdenkend"
+          ]
+        },
+        "Eiche": {
+          staerken: [
+            "kenntnisreich", "entscheidungsfreudig", "intelligent", "erfahren",
+            "stimulierend", "inspirierend", "begeistert", "wie eltern", "zuverlässig",
+            "menschenfreundlich", "zugänglich", "selten"
+          ],
+          schwaechen: [
+            "egoistisch", "desinteressiert", "faul", "emotional", "aggressiv"
+          ]
+        },
+        "Klapperschlange": {
+          staerken: [
+            "politisch", "gerissen", "defensiv", "reaktiv", "unsicher", "laut",
+            "doppelzüngig", "spaltend", "überlebend", "angepasst an raue umgebungen"
+          ],
+          schwaechen: [
+            "vertrauenswürdig", "aufrichtig", "treu", "vertrauensvoll", "glücklich",
+            "kontaktfreudig", "einladend"
+          ]
+        },
+        "Faultier": {
+          staerken: [
+            "langsam", "müde", "minimalistisch", "fügsam", "faul"
+          ],
+          schwaechen: [
+            "kontaktfreudig", "eifrig", "enthusiastisch", "produktiv", "geschäftig",
+            "anpassungsfähig", "gemeinschaftsorientiert", "nützlich"
+          ]
+        },
+        "Dinosaurier": {
+          staerken: [
+            "müde", "pessimistisch", "veränderungsscheu", "fremdenfeindlich", "zurückgezogen",
+            "kampferprobt", "hart im nehmen", "negativ", "reflektierend", "nostalgisch", "problematisch"
+          ],
+          schwaechen: [
+            "visionär", "anpassungsfähig", "kooperativ", "offen", "angepasst", "scharfsinnig",
+            "gemeinschaftsorientiert", "opportunistisch", "jugendlich", "sozial"
+          ]
+        },
+        "Einhorn": {
+          staerken: [
+            "perfekt", "ehrlich", "arrogant", "unnahbar", "ehrgeizig",
+            "frustrierend", "unsicher", "kontrollierend", "gefährlich", "inkonsistent", "nostalgisch"
+          ],
+          schwaechen: [
+            "realistisch", "selbstbewusst", "offen", "stimulierend", "vertrauenswürdig",
+            "bescheiden", "ehrlich", "vorausdenkend", "motivierend"
+          ]
+        },
+        "Geier": {
+          staerken: [
+            "gemein", "angepasst", "aasfressend", "egozentrisch", "gefährlich", "opportunistisch",
+            "politisch", "wetteifernd", "schlau", "geduldig"
+          ],
+          schwaechen: [
+            "wohlwollend", "vertrauenswürdig", "glücklich", "teamorientiert", "mutig",
+            "offen", "angenehm", "sozial"
+          ]
+        },
+        "Wal": {
+          staerken: [
+            "intelligent", "inspirierend", "kenntnisreich", "mächtig", "sozial",
+            "gemeinschaftsorientiert", "selbstgrenzend", "unfallgefährdet", "zurückhaltend",
+            "behutsam", "vom aussterben bedroht"
+          ],
+          schwaechen: [
+            "anpassungsfähig", "aggressiv", "faul", "arrogant", "gefährlich", "manipulativ"
+          ]
+        },
+        "Hybrid": {
+          staerken: [
+            "arrogant", "ehrgeizig", "geschäftig", "extravertiert", "gebildet", "weitschweifig",
+            "egoistisch", "schön", "modisch", "kompetent"
+          ],
+          schwaechen: [
+            "erfahren", "vertrauenswürdig", "tolerant", "geduldig", "fürsorglich", "gründlich", "anpassungsfähig"
+          ]
+        },
+        "Yak": {
+          staerken: [
+            "stürmisch", "enthusiastisch", "taktisch", "freundlich", "frustrierend", "fröhlich",
+            "spielerisch", "energisch", "sozial", "glücklich", "fokussiert"
+          ],
+          schwaechen: [
+            "vorsichtig", "geduldig", "erfahren", "rücksichtsvoll", "zurückhaltend", "bescheiden",
+            "sanftmütig", "langsam", "strategisch", "selbstbewusst", "intelligent"
           ]
         }
       };
@@ -1399,8 +1582,8 @@ function makeFileName(name) {
       Object.keys(animalProperties).forEach(animal => {
         Object.keys(animalProperties).forEach(otherAnimal => {
           if (animal === otherAnimal) return; // Selbstvergleich überspringen
-          const strengthsAnimal = animalProperties[animal].strengths;
-          const strengthsOther = animalProperties[otherAnimal].strengths;
+          const strengthsAnimal = animalProperties[animal].staerken;
+          const strengthsOther = animalProperties[otherAnimal].staerken;
           const commonStrengths = strengthsAnimal.filter(strength => strengthsOther.includes(strength));
           if (commonStrengths.length > 0) {
             similarityMapping[animal].push({
@@ -1415,225 +1598,229 @@ function makeFileName(name) {
 
       // Definition der tierEigenschaften
       const tierEigenschaften = {
-  "Ant": ["Structure", "Social Behavior"],
-  "Bee": ["Structure", "Social Behavior"],
-  "Chameleon": ["Flexibility", "Strategy"],
-  "Dog": ["Empathy", "Social Behavior"],
-  "Eagle": ["Strategy", "Assertiveness"],
-  "Cat": ["Strategy", "Flexibility"],
-  "Gibbon": ["Creativity", "Social Behavior"],
-  "Hyena": ["Assertiveness", "Strategy"],
-  "Useful_Insect": ["Empathy", "Creativity"],
-  "Annoying_Insect": ["Flexibility", "Assertiveness"],
-  "Jackal": ["Assertiveness", "Social Behavior"],
-  "Lion": ["Assertiveness", "Strategy"],
-  "Mouse": ["Structure", "Emotional Stability"],
-  "Parasite": ["Flexibility", "Strategy"],
-  "Owl": ["Strategy", "Empathy"],
-  "Piranha": ["Assertiveness", "Flexibility"],
-  "Oak": ["Structure", "Emotional Stability"],
-  "Rattlesnake": ["Strategy", "Flexibility"],
-  "Sloth": ["Emotional Stability", "Structure"],
-  "Dinosaur": ["Structure", "Emotional Stability"],
-  "Unicorn": ["Creativity", "Empathy"],
-  "Vulture": ["Strategy", "Flexibility"],
-  "Whale": ["Empathy", "Emotional Stability"],
-  "Hybrid": ["Creativity", "Assertiveness"],
-  "Yak": ["Social Behavior", "Emotional Stability"],
-  "Child": ["Creativity", "Empathy"]
+        "Ameise": ["Struktur", "Sozialverhalten"],
+        "Biene": ["Struktur", "Sozialverhalten"],
+        "Chamäleon": ["Flexibilität", "Strategie"],
+        "Hund": ["Empathie", "Sozialverhalten"],
+        "Adler": ["Strategie", "Durchsetzung"],
+        "Katze": ["Strategie", "Flexibilität"],
+        "Gibbon": ["Kreativität", "Sozialverhalten"],
+        "Hyäne": ["Durchsetzung", "Strategie"],
+        "Insekt_nützlich": ["Empathie", "Kreativität"],
+        "Insekt_lästig": ["Flexibilität", "Durchsetzung"],
+        "Schakal": ["Durchsetzung", "Sozialverhalten"],
+        "Löwe": ["Durchsetzung", "Strategie"],
+        "Maus": ["Struktur", "Emotionale Stabilität"],
+        "Parasit": ["Flexibilität", "Strategie"],
+        "Eule": ["Strategie", "Empathie"],
+        "Piranha": ["Durchsetzung", "Flexibilität"],
+        "Eiche": ["Struktur", "Emotionale Stabilität"],
+        "Klapperschlange": ["Strategie", "Flexibilität"],
+        "Faultier": ["Emotionale Stabilität", "Struktur"],
+        "Dinosaurier": ["Struktur", "Emotionale Stabilität"],
+        "Einhorn": ["Kreativität", "Empathie"],
+        "Geier": ["Strategie", "Flexibilität"],
+        "Wal": ["Empathie", "Emotionale Stabilität"],
+        "Hybrid": ["Kreativität", "Durchsetzung"],
+        "Yak": ["Sozialverhalten", "Emotionale Stabilität"],
+        "Kind": ["Kreativität", "Empathie"]
       };
 
       // Mapping CODE -> Tier
       const codeToTier = {
-S1: "Eagle",   S2: "Ant",     R1: "Yak",     R2: "Cat",
-S3: "Bee",     S4: "Chameleon", R3: "Parasite", R4: "Whale",
-S5: "Dinosaur", S6: "Unicorn", R5: "Jackal", R6: "Piranha",
-S7: "Oak",     S8: "Owl",     R7: "Mouse",    R8: "Lion",
-S9: "Sloth",   S10: "Vulture", R11: "Annoying_Insect", R12: "Useful_Insect",
-S11: "Gibbon", S12: "Dog",    R9: "Rattlesnake", R10: "Child",
-S13: "Hybrid", S14: "Hyena",   R15: "Dog",    R16: "Gibbon",
-S15: "Useful_Insect", S16: "Annoying_Insect", R13: "Hyena", R14: "Hybrid",
-S17: "Child",  S18: "Rattlesnake", R19: "Owl", R20: "Oak",
-S19: "Lion",   S20: "Mouse",    R21: "Unicorn", R22: "Dinosaur",
-S21: "Piranha", S22: "Jackal", R17: "Vulture",  R18: "Sloth",
-S23: "Whale",  S24: "Parasite", R25: "Ant", R26: "Eagle",
-S25: "Cat",    S26: "Yak",     R23: "Chameleon", R24: "Bee"
+        S1: "Adler",   S2: "Ameise",   R1: "Yak",     R2: "Katze",
+        S3: "Biene",   S4: "Chamäleon", R3: "Parasit", R4: "Wal",
+        S5: "Dinosaurier", S6: "Einhorn", R5: "Schakal", R6: "Piranha",
+        S7: "Eiche",   S8: "Eule",     R7: "Maus",    R8: "Löwe",
+        S9: "Faultier", S10: "Geier",   R11: "Insekt_lästig", R12: "Insekt_nützlich",
+        S11: "Gibbon", S12: "Hund",    R9: "Klapperschlange", R10: "Kind",
+        S13: "Hybrid", S14: "Hyäne",   R15: "Hund",   R16: "Gibbon",
+        S15: "Insekt_nützlich", S16: "Insekt_lästig", R13: "Hyäne", R14: "Hybrid",
+        S17: "Kind",   S18: "Klapperschlange", R19: "Eule", R20: "Eiche",
+        S19: "Löwe",   S20: "Maus",    R21: "Einhorn", R22: "Dinosaurier",
+        S21: "Piranha", S22: "Schakal", R17: "Geier",  R18: "Faultier",
+        S23: "Wal",    S24: "Parasit", R25: "Ameise", R26: "Adler",
+        S25: "Katze",  S26: "Yak",     R23: "Chamäleon", R24: "Biene"
       };
 
       // Antwortkombinationen für Frage 14 und 15
       const comboMapping = {
- C1: ["Eagle", "Ant", "Bee", "Chameleon", "Whale", "Unicorn"],
-C2: ["Yak", "Cat", "Parasite", "Dinosaur", "Jackal", "Piranha"],
-C3: ["Oak", "Owl", "Mouse", "Lion", "Sloth", "Vulture", "Hybrid"],
-C4: ["Annoying_Insect", "Useful_Insect", "Rattlesnake", "Child", "Hyena", "Dog", "Gibbon"]
+        C1: ["Adler", "Ameise", "Biene", "Chamäleon", "Wal", "Einhorn"],
+        C2: ["Yak", "Katze", "Parasit", "Dinosaurier", "Schakal", "Piranha"],
+        C3: ["Eiche", "Eule", "Maus", "Löwe", "Faultier", "Geier", "Hybrid"],
+        C4: ["Insekt_lästig", "Insekt_nützlich", "Klapperschlange", "Kind", "Hyäne", "Hund", "Gibbon"]
       };
 
       // Tier-Beschreibungen
       const tierTexte = {
-"Ant": { kurz: " Organized, team-oriented, methodical", symbolischFür: "Team Spirit" },
-"Bee": { kurz: " Hardworking, responsible, adaptable", symbolischFür: "Cohesion" },
-"Chameleon": { kurz: " Adaptable, visionary, sometimes manipulative", symbolischFür: "Adaptability" },
-"Dog": { kurz: " Enthusiastic, emotional, open", symbolischFür: "Loyalty" },
-"Eagle": { kurz: " Intuitive, strategic, competitive", symbolischFür: "Vision" },
-"Cat": { kurz: " Thoughtful, independent, rebellious", symbolischFür: "Freedom" },
-"Gibbon": { kurz: " Sociable, reflective, sometimes distant", symbolischFür: "Communication" },
-"Hyena": { kurz: " Strategic, ambitious, aggressive", symbolischFür: "Determination" },
-"Useful_Insect": { kurz: " Supportive, imaginative, positive", symbolischFür: "Usefulness" },
-"Annoying_Insect": { kurz: " Self-willed, unpredictable, often disruptive", symbolischFür: "Persistence" },
-"Jackal": { kurz: " Individualistic, aggressive, rebellious", symbolischFür: "Independence" },
-"Lion": { kurz: " Intuitive, power-conscious, strategic", symbolischFür: "Strength" },
-"Mouse": { kurz: " Thoughtful, cautious, reliable", symbolischFür: "Security" },
-"Parasite": { kurz: " Invisible, manipulative, adaptable", symbolischFür: "Camouflage" },
-"Owl": { kurz: " Wise, logical, reflective", symbolischFür: "Wisdom" },
-"Piranha": { kurz: " Dangerous, action-oriented, manipulative", symbolischFür: "Aggression" },
-"Oak": { kurz: " Strong, productive, inspiring", symbolischFür: "Stability" },
-"Rattlesnake": { kurz: " Dangerous, intelligent, cunning", symbolischFür: "Cunning" },
-"Sloth": { kurz: " Patient, modest, slow", symbolischFür: "Calmness" },
-"Dinosaur": { kurz: " Strong, distant, withdrawn", symbolischFür: "Ancient Power" },
-"Unicorn": { kurz: " Visionary, adaptable, naive", symbolischFür: "Dreaminess" },
-"Vulture": { kurz: " Foresighted, intuitive, low loyalty", symbolischFür: "Opportunism" },
-"Whale": { kurz: " Trustworthy, strong, emotional", symbolischFür: "Depth" },
-"Hybrid": { kurz: " Intelligent, adaptable, distant", symbolischFür: "Universality" },
-"Yak": { kurz: " Robust, modest, strategic", symbolischFür: "Endurance" },
-"Child": { kurz: " Enthusiastic, inspiring, emotional", symbolischFür: "Carefreeness" }
+        "Ameise": { kurz: " Organisiert, teamorientiert, methodisch", symbolischFür: "Teamgeist" },
+        "Biene": { kurz: " Fleissig, verantwortungsbewusst, anpassungsfähig", symbolischFür: "Zusammenhalt" },
+        "Chamäleon": { kurz: " Anpassungsfähig, visionär, teils manipulativ", symbolischFür: "Wandlungsfähigkeit" },
+        "Hund": { kurz: " Begeistert, emotional, offen", symbolischFür: "Treue" },
+        "Adler": { kurz: " Intuitiv, strategisch, wetteifernd", symbolischFür: "Weitblick" },
+        "Katze": { kurz: " Denkend, unabhängig, rebellisch", symbolischFür: "Freiheit" },
+        "Gibbon": { kurz: " Kontaktfreudig, reflektierend, teils distanziert", symbolischFür: "Kommunikation" },
+        "Hyäne": { kurz: " Strategisch, ehrgeizig, aggressiv", symbolischFür: "Zielstrebigkeit" },
+        "Insekt_nützlich": { kurz: " Unterstützend, einfallsreich, positiv", symbolischFür: "Nützlichkeit" },
+        "Insekt_lästig": { kurz: " Eigensinnig, unberechenbar, oft störend", symbolischFür: "Hartnäckigkeit" },
+        "Schakal": { kurz: " Individualistisch, aggressiv, rebellisch", symbolischFür: "Unabhängigkeit" },
+        "Löwe": { kurz: " Intuitiv, machtbewusst, strategisch", symbolischFür: "Kraft" },
+        "Maus": { kurz: " Denkend, vorsichtig, zuverlässig", symbolischFür: "Sicherheit" },
+        "Parasit": { kurz: " Unsichtbar, manipulativ, anpassungsfähig", symbolischFür: "Tarnung" },
+        "Eule": { kurz: " Weise, logisch, reflektierend", symbolischFür: "Weisheit" },
+        "Piranha": { kurz: " Gefährlich, handlungsorientiert, manipulativ", symbolischFür: "Aggression" },
+        "Eiche": { kurz: " Stark, produktiv, inspirierend", symbolischFür: "Stabilität" },
+        "Klapperschlange": { kurz: " Gefährlich, intelligent, gerissen", symbolischFür: "Gerissenheit" },
+        "Faultier": { kurz: " Geduldig, bescheiden, langsam", symbolischFür: "Gelassenheit" },
+        "Dinosaurier": { kurz: " Stark, distanziert, zurückgezogen", symbolischFür: "Uralte Macht" },
+        "Einhorn": { kurz: " Visionär, anpassungsfähig, naiv", symbolischFür: "Träumerei" },
+        "Geier": { kurz: " Vorausschauend, intuitiv, wenig loyal", symbolischFür: "Opportunismus" },
+        "Wal": { kurz: " Vertrauenswürdig, stark, emotional", symbolischFür: "Tiefe" },
+        "Hybrid": { kurz: " Intelligent, anpassungsfähig, distanziert", symbolischFür: "Universalität" },
+        "Yak": { kurz: " Robust, bescheiden, strategisch", symbolischFür: "Ausdauer" },
+        "Kind": { kurz: " Begeistert, inspirierend, emotional", symbolischFür: "Unbeschwertheit" }
       };
 
       // Gegenspieler-Logik
       const gegenspieler = {
-"Eagle": "Child",
-"Child": "Eagle",
-"Ant": "Hybrid",
-"Hybrid": "Ant",
-"Bee": "Hyena",
-"Hyena": "Bee",
-"Chameleon": "Owl",
-"Owl": "Chameleon",
-"Dog": "Cat",
-"Cat": "Dog",
-"Gibbon": "Parasite",
-"Parasite": "Gibbon",
-"Lion": "Mouse",
-"Mouse": "Lion",
-"Whale": "Jackal",
-"Jackal": "Whale",
-"Useful_Insect": "Annoying_Insect",
-"Annoying_Insect": "Useful_Insect",
-"Piranha": "Sloth",
-"Sloth": "Piranha",
-"Unicorn": "Vulture",
-"Vulture": "Unicorn",
-"Oak": "Rattlesnake",
-"Rattlesnake": "Oak",
-"Yak": "Dinosaur",
-"Dinosaur": "Yak"
+        "Adler": "Kind",
+        "Kind": "Adler",
+        "Ameise": "Hybrid",
+        "Hybrid": "Ameise",
+        "Biene": "Hyäne",
+        "Hyäne": "Biene",
+        "Chamäleon": "Eule",
+        "Eule": "Chamäleon",
+        "Hund": "Katze",
+        "Katze": "Hund",
+        "Gibbon": "Parasit",
+        "Parasit": "Gibbon",
+        "Löwe": "Maus",
+        "Maus": "Löwe",
+        "Wal": "Schakal",
+        "Schakal": "Wal",
+        "Insekt_nützlich": "Insekt_lästig",
+        "Insekt_lästig": "Insekt_nützlich",
+        "Piranha": "Faultier",
+        "Faultier": "Piranha",
+        "Einhorn": "Geier",
+        "Geier": "Einhorn",
+        "Eiche": "Klapperschlange",
+        "Klapperschlange": "Eiche",
+        "Yak": "Dinosaurier",
+        "Dinosaurier": "Yak"
       };
 
       // Konflikt-Texte zwischen den Tieren
       const tierKonflikte = {
-        "Eagle": {
-  "Child": "Tensions may arise between Eagle and Child, as the strategic Eagle follows a clear plan while the Child acts impulsively.",
-  "Whale": "Eagle and Whale may have different work rhythms – Eagle strives for speed, Whale prefers calmness."
-},
-"Ant": {
-  "Piranha": "Ant and Piranha show different approaches: Ant plans methodically, Piranha acts impulsively.",
-  "Hybrid": "Ant and Hybrid may differ in their methods – clear procedures versus flexible, changing approaches."
-},
-"Bee": {
-  "Hyena": "Bee and Hyena may experience tensions, as the team-oriented Bee seeks cooperation, while Hyena acts more independently.",
-  "Dinosaur": "Bee and Dinosaur often stand in contrast: Bee works for the team, Dinosaur acts pragmatically."
-},
-"Chameleon": {
-  "Owl": "Chameleon and Owl may collide in their approach – Chameleon often changes course, Owl seeks clear, logical lines.",
-  "Oak": "Chameleon and Oak have different expectations: change versus stability."
-},
-"Dog": {
-  "Cat": "Dog and Cat may have different needs – Dog seeks closeness, Cat prefers independence.",
-  "Parasite": "Dog and Parasite differ in how openly they act – Dog is direct, Parasite is more tactically reserved."
-},
-"Cat": {
-  "Dog": "Even though Dog and Cat are close, conflicts may arise when the need for closeness (Dog) meets the desire for distance (Cat).",
-  "Gibbon": "Cat and Gibbon may experience tensions, as the quiet Cat may not always fit the communicative temperament of Gibbon."
-},
-"Gibbon": {
-  "Yak": "Gibbon and Yak have different communication styles – Gibbon is very open, while Yak values stability and calmness.",
-  "Parasite": "Gibbon and Parasite may disagree, as Gibbon prefers more direct conversations, while Parasite acts more subtly."
-},
-"Hyena": {
-  "Unicorn": "Hyena and Unicorn differ significantly: Hyena is controlling and goal-oriented, while Unicorn acts idealistically and dreamily.",
-  "Bee": "Hyena and Bee may experience tensions, as the goal-oriented Hyena acts independently, while Bee focuses on teamwork."
-},
-"Useful_Insect": {
-  "Parasite": "Useful Insect and Parasite have different priorities – support versus tactical behavior.",
-  "Rattlesnake": "Useful Insect and Rattlesnake proceed differently: cooperative approaches versus critical impulses."
-},
-"Annoying_Insect": {
-  "Child": "Annoying Insect and Child may clash, as the unpredictable Insect can overwhelm the emotional Child.",
-  "Dog": "Annoying Insect provokes, while Dog seeks harmony – leading to tensions."
-},
-"Jackal": {
-  "Whale": "Jackal and Whale may have different focuses – tactical behavior versus emotional depth.",
-  "Child": "Jackal and Child often have different priorities: structured action versus impulsive behavior."
-},
-"Lion": {
-  "Mouse": "Lion and Mouse often face off: the dominant Lion acts energetically, while the cautious Mouse tends to retreat.",
-  "Owl": "Lion and Owl may differ in pace – quick decisions versus analytical considerations."
-},
-"Mouse": {
-  "Hyena": "Mouse and Hyena may create tensions, as the calm Mouse seeks stability, while Hyena acts forcefully and assertively.",
-  "Lion": "Mouse and Lion show different dynamics: caution versus dominant presence."
-},
-"Parasite": {
-  "Whale": "Parasite and Whale have different approaches: Whale aims for clarity and depth, while Parasite often appears diffuse.",
-  "Gibbon": "Parasite and Gibbon operate in different communication worlds – subtle versus open."
-},
-"Whale": {
-  "Jackal": "Whale and Jackal may experience tensions, as Whale seeks emotional stability, while Jackal proceeds tactically.",
-  "Child": "Whale and Child differ: Whale seeks calm, while the Child brings lively, emotional impulses."
-},
-"Dinosaur": {
-  "Unicorn": "Dinosaur and Unicorn have different approaches: security versus idealistic visions.",
-  "Chameleon": "Dinosaur and Chameleon may collide in their methods – stability versus change."
-},
-"Unicorn": {
-  "Hyena": "Unicorn and Hyena have contrasting temperaments – Unicorn lives in visions, while Hyena is goal-oriented.",
-  "Rattlesnake": "Unicorn and Rattlesnake may differ in their approach – harmony versus direct impulses."
-},
-"Oak": {
-  "Chameleon": "Oak and Chameleon may clash, as Oak stands for stability, while Chameleon often acts flexibly.",
-  "Piranha": "Oak and Piranha have different approaches – deliberate planning versus impulsive action."
-},
-"Owl": {
-  "Hyena": "Owl and Hyena may experience tensions, as the calm Owl prefers deep analysis, while Hyena acts quickly.",
-  "Child": "Owl and Child differ: Owl carefully weighs decisions, while the Child acts impulsively."
-},
-"Rattlesnake": {
-  "Whale": "Rattlesnake and Whale may clash, as the direct Rattlesnake can appear challenging, while Whale seeks security.",
-  "Child": "Rattlesnake and Child contrast – structured approach versus spontaneous reactions."
-},
-"Sloth": {
-  "Eagle": "Sloth and Eagle have different dynamics – Sloth works calmly, while Eagle strives for higher goals.",
-  "Piranha": "Sloth and Piranha operate at different paces – which can lead to tensions."
-},
-"Vulture": {
-  "Chameleon": "Vulture and Chameleon may differ in their planning – structured approaches versus changing strategies.",
-  "Child": "Vulture and Child move in different timescales – foresighted versus living in the moment."
-},
-"Piranha": {
-  "Owl": "Piranha and Owl may create tensions, as Piranha makes quick decisions, while Owl analyzes first.",
-  "Sloth": "Piranha and Sloth operate at different speeds – leading to mismatched dynamics."
-},
-"Child": {
-  "Eagle": "Child and Eagle may differ in their orientation – impulsive discovery versus structured planning.",
-  "Vulture": "Child and Vulture have different priorities – spontaneous versus long-term thinking."
-},
-"Yak": {
-  "Piranha": "Yak is deliberate – Piranha acts impulsively. This different approach can lead to tension.",
-  "Child": "Yak values stability, while the Child acts unpredictably – requiring understanding."
-},
-"Hybrid": {
-  "Ant": "Hybrid and Ant differ in their methods – flexible thinking versus clear order.",
-  "Yak": "Hybrid and Yak have different focuses – unconventional approaches versus steady endurance."
-}
+        "Adler": {
+          "Kind": "Zwischen Adler und Kind können Spannungen entstehen, da der strategische Adler einen klaren Plan verfolgt, während das Kind impulsiv agiert.",
+          "Wal": "Adler und Wal können unterschiedliche Arbeitsrhythmen haben – Adler strebt nach Schnelligkeit, Wal setzt auf Ruhe."
+        },
+        "Ameise": {
+          "Piranha": "Ameise und Piranha zeigen unterschiedliche Herangehensweisen: Die Ameise plant strukturiert, der Piranha handelt impulsiv.",
+          "Hybrid": "Ameise und Hybrid können in ihrer Methodik auseinandergehen – klare Abläufe versus flexible, wechselnde Ansätze."
+        },
+        "Biene": {
+          "Hyäne": "Biene und Hyäne können Spannungen erleben, da die teamorientierte Biene auf Kooperation setzt, während die Hyäne eher eigenständig agiert.",
+          "Dinosaurier": "Biene und Dinosaurier stehen oft unterschiedlich: Biene arbeitet fürs Team, Dinosaurier agiert pragmatisch."
+        },
+        "Chamäleon": {
+          "Eule": "Chamäleon und Eule können in ihrer Herangehensweise kollidieren – das Chamäleon ändert oft den Kurs, die Eule sucht klare, logische Linien.",
+          "Eiche": "Chamäleon und Eiche haben unterschiedliche Erwartungen: Wandel versus Beständigkeit."
+        },
+        "Hund": {
+          "Katze": "Hund und Katze können unterschiedliche Bedürfnisse haben – der Hund sucht Nähe, die Katze bevorzugt Unabhängigkeit.",
+          "Parasit": "Hund und Parasit unterscheiden sich darin, wie offen sie agieren – der Hund ist direkt, der Parasit eher taktisch zurückhaltend."
+        },
+        "Katze": {
+          "Hund": "Auch wenn Hund und Katze eng beieinander liegen, können Konflikte entstehen, wenn der Wunsch nach Nähe (Hund) auf das Bedürfnis nach Distanz (Katze) trifft.",
+          "Gibbon": "Katze und Gibbon können Spannungen haben, da die ruhige Katze sich nicht immer in das kommunikative Temperament des Gibbons einfügt."
+        },
+        "Gibbon": {
+          "Yak": "Gibbon und Yak haben unterschiedliche Kommunikationsstile – Gibbon ist sehr offen, während Yak auf Stabilität und Ruhe setzt.",
+          "Parasit": "Gibbon und Parasit können sich uneinig sein, da der offene Gibbon direktere Gespräche bevorzugt, der Parasit subtiler agiert."
+        },
+        "Hyäne": {
+          "Einhorn": "Hyäne und Einhorn unterscheiden sich deutlich: Hyäne ist kontrollierend und zielstrebig, während Einhorn idealistisch und träumerisch agiert.",
+          "Biene": "Hyäne und Biene können Spannungen erleben, da die zielorientierte Hyäne eher eigenständig agiert, die Biene aber auf Teamarbeit setzt."
+        },
+        "Insekt_nützlich": {
+          "Parasit": "Das nützliche Insekt und der Parasit haben unterschiedliche Prioritäten – Unterstützung versus taktisches Verhalten.",
+          "Klapperschlange": "Insekt_nützlich und Klapperschlange gehen unterschiedlich vor: Kooperative Ansätze versus kritische Impulse."
+        },
+        "Insekt_lästig": {
+          "Kind": "Insekt_lästig und Kind können aufeinanderprallen, da das unberechenbare Insekt das emotionale Kind überfordern kann.",
+          "Hund": "Insekt_lästig provoziert, während der Hund auf Harmonie bedacht ist – das führt zu Spannungen."
+        },
+        "Schakal": {
+          "Wal": "Schakal und Wal können unterschiedliche Schwerpunkte haben – taktisches Vorgehen versus emotionale Tiefe.",
+          "Kind": "Schakal und Kind haben oft unterschiedliche Prioritäten: Strukturiertes Handeln versus impulsives Verhalten."
+        },
+        "Löwe": {
+          "Maus": "Löwe und Maus stehen sich oft gegenüber: Der dominante Löwe agiert energisch, während die vorsichtige Maus sich eher zurückzieht.",
+          "Eule": "Löwe und Eule können in ihrem Tempo auseinandergehen – schnelle Entscheidungen versus analytische Überlegungen."
+        },
+        "Maus": {
+          "Hyäne": "Maus und Hyäne können Spannungen erzeugen, da die ruhige Maus Stabilität sucht, während Hyäne kraftvoll und fordernd agiert.",
+          "Löwe": "Maus und Löwe zeigen unterschiedliche Dynamiken: Vorsicht versus dominante Präsenz."
+        },
+        "Parasit": {
+          "Wal": "Parasit und Wal haben unterschiedliche Ansätze: Während Wal auf Klarheit und Tiefe setzt, wirkt Parasit oft diffus.",
+          "Gibbon": "Parasit und Gibbon bewegen sich in unterschiedlichen Kommunikationswelten – subtil versus offen."
+        },
+        "Wal": {
+          "Schakal": "Wal und Schakal können Spannungen haben, da Wal auf emotionale Stabilität setzt, während Schakal taktisch vorgeht.",
+          "Kind": "Wal und Kind unterscheiden sich: Der Wal sucht Ruhe, das Kind bringt lebhafte, emotionale Impulse ein."
+        },
+        "Dinosaurier": {
+          "Einhorn": "Dinosaurier und Einhorn haben unterschiedliche Herangehensweisen: Sicherheit versus idealistische Visionen.",
+          "Chamäleon": "Dinosaurier und Chamäleon können in ihren Ansätzen kollidieren – Beständigkeit versus Wandel."
+        },
+        "Einhorn": {
+          "Hyäne": "Einhorn und Hyäne zeigen unterschiedliche Temperamente – das Einhorn lebt in Visionen, während Hyäne zielstrebig agiert.",
+          "Klapperschlange": "Einhorn und Klapperschlange können in ihrer Herangehensweise auseinandergehen – Harmonie versus direkte Impulse."
+        },
+        "Eiche": {
+          "Chamäleon": "Eiche und Chamäleon können aufeinanderprallen, da Eiche auf Beständigkeit setzt und Chamäleon häufig flexibel agiert.",
+          "Piranha": "Eiche und Piranha haben unterschiedliche Zugänge – überlegte Planung versus impulsives Handeln."
+        },
+        "Eule": {
+          "Hyäne": "Eule und Hyäne können Spannungen haben, da die ruhige Eule tiefgründige Analysen bevorzugt, während Hyäne schneller agiert.",
+          "Kind": "Eule und Kind unterscheiden sich: Eule wägt sorgfältig ab, das Kind handelt impulsiv."
+        },
+        "Klapperschlange": {
+          "Wal": "Klapperschlange und Wal können aufeinanderprallen, da die direkte Klapperschlange oft herausfordernd wirkt und der Wal Sicherheit sucht.",
+          "Kind": "Klapperschlange und Kind stehen in Kontrast – strukturierte Herangehensweise versus spontane Reaktionen."
+        },
+        "Faultier": {
+          "Adler": "Faultier und Adler haben unterschiedliche Dynamiken – Faultier arbeitet in Ruhe, Adler strebt nach Höherem.",
+          "Piranha": "Faultier und Piranha arbeiten in verschiedenen Tempi – was zu Spannungen führen kann."
+        },
+        "Geier": {
+          "Chamäleon": "Geier und Chamäleon können in ihrer Planung auseinandergehen – strukturierte Ansätze versus wechselnde Strategien.",
+          "Kind": "Geier und Kind bewegen sich in unterschiedlichen Zeiten – vorausschauend versus im Hier und Jetzt."
+        },
+        "Piranha": {
+          "Eule": "Piranha und Eule können Spannungen erzeugen, da Piranha schnelle Entscheidungen trifft, während die Eule erst analysiert.",
+          "Faultier": "Piranha und Faultier arbeiten in unterschiedlichen Tempi – was zu unpassenden Dynamiken führt."
+        },
+        "Kind": {
+          "Adler": "Kind und Adler können in ihrer Ausrichtung auseinandergehen – impulsives Entdecken versus strukturierte Planung.",
+          "Geier": "Kind und Geier haben unterschiedliche Prioritäten – spontan versus langfristig denkend."
+        },
+        "Yak": {
+          "Piranha": "Yak ist bedacht – Piranha handelt impulsiv. Diese unterschiedliche Herangehensweise kann zu Spannung führen.",
+          "Kind": "Yak schätzt Stabilität, während das Kind unberechenbar agiert – das erfordert Verständnis."
+        },
+        "Einhorn": {
+          "Hyäne": "Einhorn und Hyäne prallen in ihren Ansätzen aufeinander – idealistische Visionen versus nüchterne Zielorientierung.",
+          "Schakal": "Einhorn und Schakal haben unterschiedliche Herangehensweisen – verträumt versus kontrollierend."
+        },
+        "Hybrid": {
+          "Ameise": "Hybrid und Ameise unterscheiden sich in ihrer Methodik – flexibles Denken versus klare Ordnung.",
+          "Yak": "Hybrid und Yak haben unterschiedliche Schwerpunkte – unkonventionelle Ansätze versus beständige Ausdauer."
+        }
       };
 
  formElem.addEventListener("submit", function(e) {
@@ -1708,7 +1895,7 @@ ergebnisElem.insertAdjacentHTML('afterbegin', `
     font-weight:700;
     color:inherit;
   ">
-  Welcome to the <span style="color:#E44A00;">OrganisationsZoo</span>
+    Willkommen im <span style="color:#E44A00;">OrganisationsZoo</span>
   </h2>
 
  <!-- Links: Kontaktdaten -->
@@ -1764,32 +1951,33 @@ reflekt.classList.add('reflexion-text');
 reflekt.style.marginTop = '1.5rem';
 reflekt.innerHTML = `
   <h3 style="font-size:1em; color:#E44A00; margin-bottom:0.5rem;">
-   What Your Animal Profile Reveals – and Why It's More Than Just Exciting
-</h3>
-<p>
-  Your result is more than just a fun game:
-  <strong>It’s a reflection of your current behavioral dynamics</strong>.
-  Each animal stands for certain ways of thinking, feeling, and acting –
-  <em>and the mix makes you unique</em>.
-</p>
-<p>
-  Maybe within you lies the quiet wisdom of an <strong>Owl</strong>,
-  the loyalty of a <strong>Dog</strong>, the strategic instinct of a
-  <strong>Hyena</strong>, the vision of an <strong>Eagle</strong>,
-  or the creative chaos of a <strong>Gibbon</strong>?
-</p>
-<p>
-  These animal metaphors help you see yourself with a wink and
-  at the same time with depth – <strong>without pigeonholing you, but offering space for reflection</strong>.
-</p>
-<p>
-  Curious to explore, question, and develop your profile together with others?
-  <strong>Then a workshop is just right for you!</strong>
-</p>
-<p>
-  Because: <em>Personal development should be fun.</em> 
-  We often gain the best insights through exchange.
-</p>
+    Was dein Tierprofil dir zeigt – und warum es mehr als nur spannend ist
+  </h3>
+  <p>
+    Dein Ergebnis ist mehr als eine nette Spielerei:
+    <strong>Es ist ein Spiegel deiner aktuellen Verhaltensdynamik</strong>.
+    Jedes Tier steht für bestimmte Denk-, Fühl- und Handlungsweisen –
+    <em>der Mix macht dich einzigartig</em>.
+  </p>
+  <p>
+    Vielleicht steckt in dir die stille Weisheit einer <strong>Eule</strong>,
+    die Treue eines <strong>Hundes</strong>, das strategische Gespür einer
+    <strong>Hyäne</strong>, die Vision eines <strong>Adlers</strong> oder
+    das kreative Chaos eines <strong>Gibbons</strong>?
+  </p>
+  <p>
+    Diese Tierbilder helfen dir, dich selbst mit einem Augenzwinkern und
+    gleichzeitig mit Tiefe zu betrachten – <strong>ohne Schubladen, dafür mit
+    Raum zur Reflexion</strong>.
+  </p>
+  <p>
+    Lust, dein Profil gemeinsam mit anderen zu entdecken, zu hinterfragen und
+    weiterzuentwickeln? <strong>Dann ist ein Workshop genau das Richtige für dich!</strong>
+  </p>
+  <p>
+    Denn: <em>Persönlichkeitsentwicklung darf Spass machen.</em> Erkenntnisse
+    gewinnen wir oft am besten im Austausch.
+  </p>
 `;
 ergebnisElem.appendChild(reflekt);
 
@@ -1808,7 +1996,7 @@ ergebnisElem.insertAdjacentHTML('beforeend', `
     margin-top:2rem;
     margin-bottom:1rem;
   ">
-    Your Behavior Profile for the Selected Situation
+    Ihr Verhaltensprofil zur gewählten Situation
     <div style="
       font-size:0.85em;
       font-weight:normal;
@@ -1898,7 +2086,7 @@ const gesamtPunkte = Object.values(tierCounts).reduce((sum, v) => sum + v, 0);
 // ---------------------------
 // Gesamtauswertung Top-5 Tierprofile
 // ---------------------------
-ergebnisElem.innerHTML += `<h2>"Your Animal Behavior Patterns"</h2>`;
+ergebnisElem.innerHTML += `<h2>„Deine tierischen Verhaltensmuster“</h2>`;
 const sortedTiers = Object.entries(tierCounts).sort((a, b) => b[1] - a[1]);
 const top5 = sortedTiers.slice(0, 5);
 
@@ -2001,7 +2189,7 @@ if (sortedOpponents.length > 0) {
   
   // Erstelle den Header:
   let conflictHeader = document.createElement("div");
-  conflictHeader.innerHTML = "<h2 style='font-size: 1.5em;'>„Where tensions arise in the enclosure...“</h2>";
+  conflictHeader.innerHTML = "<h2 style='font-size: 1.5em;'>„Wo’s im Gehege kracht…“</h2>";
   ergebnisElem.appendChild(conflictHeader);
 
   // Erstelle den Container für die Konfliktpartner:
@@ -2087,154 +2275,154 @@ const beschreibungStyle = `
 
 // Mapping: Kategorie → relevante Frageindizes (Freizeit)
 const kategorienMapping = {
-"Group Activities & Collaboration": [0, 1, 9],
-"Leadership & Responsibility": [6, 7, 12],
-"Activity Planning & Organization": [5, 10],
-"Adaptability & Stress Management": [3, 11],
-"Self-Development & Personal Growth": [2, 4, 8]
+  "Gruppenaktivitäten & Zusammenarbeit": [0, 1, 9],
+  "Leitung & Verantwortung": [6, 7, 12],
+  "Aktivitätsplanung & Organisation": [5, 10],
+  "Anpassungsfähigkeit & Belastungshandling": [3, 11],
+  "Selbstentfaltung & Persönliche Entwicklung": [2, 4, 8]
 };
 
 // Tier-Beschreibungen je Kategorie (Freizeit)
 const categoryDescriptions = {
-  "Group Activities & Collaboration": {
-  "Ant": "Organized and goal-oriented, provides structure within the group.",
-  "Bee": "Hardworking and community-driven, strengthens cohesion.",
-  "Chameleon": "Flexible and creative, brings new ideas to activities.",
-  "Dog": "Empathetic and loyal, fosters togetherness.",
-  "Eagle": "Can inspire, but tends toward individualism.",
-  "Cat": "Independent and critical, questions group decisions.",
-  "Gibbon": "Communicative and moderating, ensures good exchange.",
-  "Hyena": "Dominant and assertive, establishes clear roles.",
-  "Useful_Insect": "Supportive and inventive, solution-oriented thinker.",
-  "Annoying_Insect": "Selfish and restless, can cause disturbances.",
-  "Jackal": "Rebellious and headstrong, brings tension to the group.",
-  "Lion": "Strong leader, gladly takes charge.",
-  "Mouse": "Quiet and cautious, works reliably in the background.",
-  "Parasite": "Takes advantage of the group without contributing much.",
-  "Owl": "Far-sighted and wise, provides profound insights.",
-  "Piranha": "Goal-oriented but aggressive in group settings.",
-  "Oak": "Steadfast and stabilizing, provides security.",
-  "Rattlesnake": "Tactical and calculating, pursues own goals.",
-  "Sloth": "Patient and calm, soothes hectic moods.",
-  "Dinosaur": "Experienced but often sluggish in new environments.",
-  "Unicorn": "Visionary and idealistic, inspires others.",
-  "Vulture": "Observes a lot but rarely intervenes actively.",
-  "Whale": "Emotionally deep and trustworthy, encourages openness.",
-  "Hybrid": "Intelligent and analytical, focused on efficiency.",
-  "Yak": "Robust and loyal, reliably supports the group.",
-  "Child": "Enthusiastic and creative, sometimes needs guidance."
-},
-"Leadership & Responsibility": {
-  "Eagle": "Natural leader, visionary and determined.",
-  "Hybrid": "Versatile in leadership, combines strategy with flexibility.",
-  "Lion": "Dominant and charismatic, gladly assumes command.",
-  "Dog": "Responsible and cooperative.",
-  "Ant": "Organized in the collective – takes responsibility for the group.",
-  "Bee": "Conscientious and committed, contributes greatly to success.",
-  "Chameleon": "Leads indirectly, adapts to the group.",
-  "Cat": "Self-reliant, avoids formal leadership roles.",
-  "Gibbon": "Supportive and dialogue-oriented – leads through communication.",
-  "Hyena": "Assertive and controlling.",
-  "Useful_Insect": "Helps in the background, assumes responsibility without spotlight.",
-  "Annoying_Insect": "Reluctant to take responsibility, often disruptive.",
-  "Jackal": "Rebellious – assumes responsibility on own terms.",
-  "Mouse": "Hesitant, steps up only when feeling secure.",
-  "Parasite": "Avoids responsibility, prefers to act unnoticed.",
-  "Owl": "Wise and strategic – leads through informed decisions.",
-  "Piranha": "Dominant, enforces decisions quickly.",
-  "Oak": "Stable and constant – a calming force in leadership roles.",
-  "Rattlesnake": "Tactical and hidden – leads calculatingly.",
-  "Sloth": "Too laid-back for traditional leadership roles.",
-  "Dinosaur": "Traditional, leads through experience.",
-  "Unicorn": "Inspiring, sometimes too idealistic for clear leadership.",
-  "Vulture": "Waits before assuming responsibility.",
-  "Whale": "Trustworthy and caring in leadership tasks.",
-  "Yak": "Reliable and strong – leads through consistency.",
-  "Child": "Takes initiative spontaneously but without long-term planning."
-},
-"Activity Planning & Organization": {
-  "Gibbon": "Creative and thoughtful, plans diverse activities.",
-  "Unicorn": "Visionary and innovative in concept development.",
-  "Eagle": "Structured and goal-oriented in planning.",
-  "Ant": "Methodical and organized.",
-  "Bee": "Pragmatic, focused on efficiency.",
-  "Chameleon": "Flexible, adapts plans spontaneously.",
-  "Dog": "Trusts intuition and group mood.",
-  "Lion": "Decisive, implements plans quickly.",
-  "Cat": "Analytical and precise in preparation.",
-  "Hyena": "Strategic long-term, keeps goals in view.",
-  "Useful_Insect": "Unconventionally creative.",
-  "Annoying_Insect": "Impulsive, lacks structure.",
-  "Jackal": "Spontaneous and headstrong.",
-  "Mouse": "Cautious, weighs everything carefully.",
-  "Parasite": "Adapts without planning independently.",
-  "Owl": "Profound and sustainable in concept work.",
-  "Piranha": "Impulsive, plans under pressure.",
-  "Oak": "Foresighted and stable.",
-  "Rattlesnake": "Tactical and covert.",
-  "Sloth": "Slow, needs much time.",
-  "Dinosaur": "Traditional, avoids innovation.",
-  "Vulture": "Waits and decides at the optimal time.",
-  "Whale": "Value-oriented and intuitive.",
-  "Hybrid": "Analytical and flexible.",
-  "Yak": "Practical and steadfast.",
-  "Child": "Spontaneous and experimental."
-},
-"Adaptability & Stress Management": {
-  "Ant": "Stays organized even under stress.",
-  "Bee": "Responds collectively and in a structured way.",
-  "Chameleon": "Adapts playfully to any situation.",
-  "Dog": "Seeks emotional support for balance.",
-  "Eagle": "Observes calmly and makes clear decisions.",
-  "Cat": "Withdraws, solves problems independently.",
-  "Gibbon": "Open in conversation, finds balance through dialogue.",
-  "Hyena": "Impulsive, fights through with energy.",
-  "Useful_Insect": "Pragmatic and inventive.",
-  "Annoying_Insect": "Amplifies restlessness in the environment.",
-  "Jackal": "Rebels under pressure.",
-  "Lion": "Dominant and controlled.",
-  "Mouse": "Cautious and reserved.",
-  "Parasite": "Avoids stressful situations.",
-  "Owl": "Analyzes and remains calm.",
-  "Piranha": "Aggressive and fast.",
-  "Oak": "Steadfast and calm.",
-  "Rattlesnake": "Defensive and calculated.",
-  "Sloth": "Calm, lets stress pass by.",
-  "Dinosaur": "Struggles with change.",
-  "Unicorn": "Seeks creative ways out, but may be overwhelmed.",
-  "Vulture": "Adapts slowly.",
-  "Whale": "Emotional depth helps to stay calm.",
-  "Hybrid": "Flexible and quick in reaction.",
-  "Yak": "Resilient and enduring.",
-  "Child": "Responds curiously, processes stress playfully."
-},
-"Self-Development & Personal Growth": {
-  "Ant": "Structured and continuous in self-work.",
-  "Bee": "Open to feedback, strives for improvement.",
-  "Cat": "Self-critical and independent.",
-  "Gibbon": "Creative and communicative in reflection.",
-  "Owl": "Analytical and profound.",
-  "Eagle": "Goal-oriented through challenges.",
-  "Chameleon": "Reflects situationally.",
-  "Dog": "Learns through relationships.",
-  "Lion": "Power- and status-oriented.",
-  "Hyena": "Ambitious and strategic.",
-  "Useful_Insect": "Eager to learn through practical doing.",
-  "Annoying_Insect": "Little introspection.",
-  "Jackal": "Rebellious with drive.",
-  "Mouse": "Reserved but profound.",
-  "Parasite": "Develops out of necessity.",
-  "Piranha": "Little interest in inner work.",
-  "Oak": "Steady and value-based.",
-  "Rattlesnake": "Calculating in development.",
-  "Sloth": "Calm and patient.",
-  "Dinosaur": "Slow, tradition-oriented.",
-  "Unicorn": "Idealistic and meaning-oriented.",
-  "Vulture": "Reflects more about others.",
-  "Whale": "Deeply emotional and holistic.",
-  "Hybrid": "Introspective and versatile.",
-  "Yak": "Down-to-earth and experience-based.",
-  "Child": "Curious and playful in learning."
+  "Gruppenaktivitäten & Zusammenarbeit": {
+    "Ameise": "Organisiert und zielstrebig, sorgt für Struktur in der Gruppe.",
+    "Biene": "Fleißig und gemeinschaftlich, fördert den Zusammenhalt.",
+    "Chamäleon": "Flexibel und kreativ, bringt neue Ideen in Aktivitäten.",
+    "Hund": "Empathisch und loyal, stärkt das Miteinander.",
+    "Adler": "Kann inspirieren, neigt aber zu Individualismus.",
+    "Katze": "Eigenständig und kritisch, hinterfragt Gruppenentscheidungen.",
+    "Gibbon": "Kommunikativ und moderierend, sorgt für einen guten Austausch.",
+    "Hyäne": "Dominant und durchsetzungsstark, schafft klare Rollen.",
+    "Insekt_nützlich": "Unterstützend und ideenreich, denkt lösungsorientiert.",
+    "Insekt_lästig": "Egoistisch und unruhig, kann für Unruhe sorgen.",
+    "Schakal": "Rebellisch und eigensinnig, bringt Spannung ins Geschehen.",
+    "Löwe": "Führungsstark, übernimmt gerne die Leitung.",
+    "Maus": "Ruhig und vorsichtig, arbeitet zuverlässig im Hintergrund.",
+    "Parasit": "Nutzt die Gruppe, ohne viel beizutragen.",
+    "Eule": "Weitsichtig und klug, liefert tiefgründige Impulse.",
+    "Piranha": "Zielorientiert, aber aggressiv im Gruppenkontext.",
+    "Eiche": "Standhaft und stabilisierend, bietet Sicherheit.",
+    "Klapperschlange": "Taktisch und berechnend, verfolgt eigene Ziele.",
+    "Faultier": "Geduldig und ruhig, dämpft hektische Stimmung.",
+    "Dinosaurier": "Erfahren, aber oft etwas träge in neuen Settings.",
+    "Einhorn": "Visionär und idealistisch, inspiriert andere.",
+    "Geier": "Beobachtet viel, mischt sich selten aktiv ein.",
+    "Wal": "Emotional tief und vertrauensvoll, fördert Offenheit.",
+    "Hybrid": "Intelligent und analytisch, fokussiert auf Effizienz.",
+    "Yak": "Robust und loyal, steht verlässlich zu seinen Leuten.",
+    "Kind": "Begeistert und kreativ, braucht manchmal Anleitung."
+  },
+  "Leitung & Verantwortung": {
+    "Adler": "Leitungspersönlichkeit, visionär und entschlossen.",
+    "Hybrid": "Vielseitig in der Leitung, kombiniert Strategie mit Flexibilität.",
+    "Löwe": "Dominant und charismatisch, übernimmt gerne das Kommando.",
+    "Hund": "Verantwortungsbewusst und kooperativ.",
+    "Ameise": "Organisiert im Kollektiv – übernimmt Verantwortung für die Gruppe.",
+    "Biene": "Pflichtbewusst und engagiert, trägt viel zum Gelingen bei.",
+    "Chamäleon": "Führt indirekt, passt sich der Gruppe an.",
+    "Katze": "Eigenverantwortlich, meidet formale Führungsrollen.",
+    "Gibbon": "Unterstützend und dialogorientiert – führt durch Austausch.",
+    "Hyäne": "Durchsetzungsfähig und kontrollierend.",
+    "Insekt_nützlich": "Hilft im Hintergrund, übernimmt Verantwortung ohne Rampenlicht.",
+    "Insekt_lästig": "Übernimmt ungern Verantwortung, wirkt oft störend.",
+    "Schakal": "Rebellisch – übernimmt Verantwortung nach eigenem Gutdünken.",
+    "Maus": "Zögerlich, greift nur zu, wenn sie sich sicher fühlt.",
+    "Parasit": "Vermeidet Verantwortung, agiert lieber unbemerkt.",
+    "Eule": "Weise und strategisch – leitet durch fundierte Entscheidungen.",
+    "Piranha": "Dominant, setzt Entscheidungen schnell durch.",
+    "Eiche": "Stabil und konstant – ein Ruhepol in Leitungsrollen.",
+    "Klapperschlange": "Taktisch und verborgen – führt berechnend.",
+    "Faultier": "Zu gelassen für klassische Verantwortungsrollen.",
+    "Dinosaurier": "Traditionell, leitet durch Erfahrung.",
+    "Einhorn": "Inspirierend, manchmal zu idealistisch für klare Leitung.",
+    "Geier": "Wartet ab, bevor es Verantwortung übernimmt.",
+    "Wal": "Vertrauenswürdig und fürsorglich in Leitungsaufgaben.",
+    "Yak": "Zuverlässig und stark – führt durch Beständigkeit.",
+    "Kind": "Übernimmt spontan, aber ohne langfristige Planung."
+  },
+  "Aktivitätsplanung & Organisation": {
+    "Gibbon": "Kreativ und überlegt, plant abwechslungsreiche Aktivitäten.",
+    "Einhorn": "Visionär und innovativ in der Konzeptentwicklung.",
+    "Adler": "Strukturiert und zielgerichtet in der Planung.",
+    "Ameise": "Methodisch und organisiert.",
+    "Biene": "Pragmatisch, achtet auf Effizienz.",
+    "Chamäleon": "Flexibel, passt Pläne spontan an.",
+    "Hund": "Vertraut auf Intuition und Stimmung der Gruppe.",
+    "Löwe": "Entschlossen, setzt Pläne schnell um.",
+    "Katze": "Analytisch und präzise in der Vorbereitung.",
+    "Hyäne": "Langfristig strategisch, behält Ziele im Blick.",
+    "Insekt_nützlich": "Unkonventionell kreativ.",
+    "Insekt_lästig": "Impulsiv, wenig Struktur.",
+    "Schakal": "Spontan und eigensinnig.",
+    "Maus": "Vorsichtig, wägt alles ab.",
+    "Parasit": "Passt sich an, ohne selbst zu planen.",
+    "Eule": "Tiefgründig und langlebig im Konzept.",
+    "Piranha": "Impulsiv, plant unter Druck.",
+    "Eiche": "Vorausschauend und stabil.",
+    "Klapperschlange": "Taktisch und verdeckt.",
+    "Faultier": "Langsam, braucht viel Zeit.",
+    "Dinosaurier": "Traditionsbewusst, meidet Neues.",
+    "Geier": "Abwartend, entscheidet zum optimalen Zeitpunkt.",
+    "Wal": "Werteorientiert und intuitiv.",
+    "Hybrid": "Analytisch und flexibel.",
+    "Yak": "Praktisch und standhaft.",
+    "Kind": "Spontan und experimentierfreudig."
+  },
+  "Anpassungsfähigkeit & Belastungshandling": {
+    "Ameise": "Bleibt organisiert, auch wenn es stressig wird.",
+    "Biene": "Reagiert gemeinschaftlich und strukturiert.",
+    "Chamäleon": "Passt sich jeder Situation spielerisch an.",
+    "Hund": "Sucht emotionale Unterstützung zum Ausgleich.",
+    "Adler": "Beobachtet ruhig und trifft klare Entscheidungen.",
+    "Katze": "Zieht sich zurück, löst Probleme selbstständig.",
+    "Gibbon": "Offen im Austausch, findet Balance im Gespräch.",
+    "Hyäne": "Impulsiv, kämpft sich energisch durch.",
+    "Insekt_nützlich": "Pragmatisch und erfinderisch.",
+    "Insekt_lästig": "Verstärkt Unruhe im Umfeld.",
+    "Schakal": "Rebelliert unter Druck.",
+    "Löwe": "Dominant und kontrolliert.",
+    "Maus": "Vorsichtig und zurückhaltend.",
+    "Parasit": "Weicht stressigen Situationen aus.",
+    "Eule": "Analysiert und bleibt gelassen.",
+    "Piranha": "Aggressiv und schnell.",
+    "Eiche": "Standhaft und ruhig.",
+    "Klapperschlange": "Defensiv und kalkuliert.",
+    "Faultier": "Gelassen, lässt Stress vorüberziehen.",
+    "Dinosaurier": "Tut sich schwer mit Wandel.",
+    "Einhorn": "Sucht kreative Auswege, kann aber überfordert sein.",
+    "Geier": "Passt sich langsam an.",
+    "Wal": "Emotionale Tiefe hilft, ruhig zu bleiben.",
+    "Hybrid": "Flexibel und schnell in der Reaktion.",
+    "Yak": "Belastbar und ausdauernd.",
+    "Kind": "Reagiert neugierig, verarbeitet Stress spielerisch."
+  },
+  "Selbstentfaltung & Persönliche Entwicklung": {
+    "Ameise": "Strukturiert und kontinuierlich in der Selbstarbeit.",
+    "Biene": "Offen für Feedback, strebt nach Verbesserung.",
+    "Katze": "Selbstkritisch und unabhängig.",
+    "Gibbon": "Kreativ und kommunikativ in Reflexion.",
+    "Eule": "Analytisch und tiefgründig.",
+    "Adler": "Zielgerichtet durch Herausforderungen.",
+    "Chamäleon": "Situativ reflektierend.",
+    "Hund": "Lernt durch Beziehungen.",
+    "Löwe": "Macht- und statusorientiert.",
+    "Hyäne": "Ehrgeizig und strategisch.",
+    "Insekt_nützlich": "Lernbereit durch praktisches Tun.",
+    "Insekt_lästig": "Wenig introspektiv.",
+    "Schakal": "Rebellisch mit Antrieb.",
+    "Maus": "Zurückhaltend, aber tiefgründig.",
+    "Parasit": "Entwickelt sich aus Notwendigkeit.",
+    "Piranha": "Wenig Interesse an innerer Arbeit.",
+    "Eiche": "Stetig und wertebasiert.",
+    "Klapperschlange": "Berechnend in der Entwicklung.",
+    "Faultier": "Gelassen und geduldig.",
+    "Dinosaurier": "Langsam, traditionsorientiert.",
+    "Einhorn": "Idealistisch und sinnorientiert.",
+    "Geier": "Reflektiert mehr über andere.",
+    "Wal": "Tief emotional und ganzheitlich.",
+    "Hybrid": "Introspektiv und vielseitig.",
+    "Yak": "Bodenständig und erfahrungsbasiert.",
+    "Kind": "Neugierig und spielerisch lernend."
   }
 };
 
@@ -2259,7 +2447,7 @@ headingWrapper.style.display = "flex";
 headingWrapper.style.flexDirection = "column";
 headingWrapper.style.gap = "12px";
 
-// 1. Haupttitel: Instincts, Intuition & Influence
+// 1. Haupttitel: Instinkte, Intuition & Einfluss
 const subtitle = document.createElement("h2");
 subtitle.textContent = "Instinkte, Intuition & Einfluss";
 subtitle.style.fontSize = "1.6em";
@@ -2271,7 +2459,7 @@ headingWrapper.appendChild(subtitle);
 
 // 2. Erklärungstext
 const erklaerung = document.createElement("p");
-erklaerung.textContent = "This overview shows how your character tendencies express themselves in different situations – without putting you in a box, but with a wink."
+erklaerung.textContent = "Diese Übersicht zeigt, wie deine charakterlichen Tendenzen sich in verschiedenen Situationen ausdrücken – ganz ohne Schubladendenken, aber mit einem Augenzwinkern.";
 erklaerung.style.fontSize = "0.95em";
 erklaerung.style.lineHeight = "1.6";
 erklaerung.style.margin = "0";
@@ -2279,9 +2467,9 @@ erklaerung.style.textAlign = "left";
 erklaerung.style.color = "inherit";
 headingWrapper.appendChild(erklaerung);
 
-// 3. Zweite Hauptzeile: "Your Behavior Map"
+// 3. Zweite Hauptzeile: „Deine Verhaltenskarte“
 const verhaltensTitel = document.createElement("h2");
-verhaltensTitel.textContent = "„Your Behavior Map“";
+verhaltensTitel.textContent = "„Deine Verhaltenskarte“";
 verhaltensTitel.style.fontSize = "1.6em";
 verhaltensTitel.style.fontWeight = "700";
 verhaltensTitel.style.margin = "24px 0 0";
@@ -2398,13 +2586,13 @@ reflexionWrapper.style.margin = "60px auto 30px";
 reflexionWrapper.style.textAlign = "center";
 
 const reflexionTitle = document.createElement("h2");
-reflexionTitle.textContent = "Your Personal Profile at a Glance";
+reflexionTitle.textContent = "Dein persönliches Profil auf einen Blick";
 reflexionTitle.style.fontSize = "1.8em";
 reflexionTitle.style.marginBottom = "12px";
 
 const reflexionText = document.createElement("p");
 reflexionText.textContent =
- "This diagram shows how strongly certain traits appear in your overall profile – based on your answers. It is a snapshot of your reflection on yourself."
+  "Dieses Diagramm zeigt, wie ausgeprägt bestimmte Eigenschaften bei dir im Gesamtbild erscheinen – basierend auf deinen Antworten. Es ist eine Momentaufnahme deiner Reflexion über dich selbst.";
 reflexionText.style.fontSize = "0.95em";
 reflexionText.classList.add("reflexion-text");
 reflexionText.style.lineHeight = "1.6";
