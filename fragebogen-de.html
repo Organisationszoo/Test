@@ -2,6 +2,7 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Fragebogen mit Tierprofil</title>
   <!-- Open Sans einbinden statt Roboto -->
@@ -154,6 +155,20 @@
       align-items: center;
       margin-bottom: 20px;
     }
+.tier-container {
+  width: 100%;
+  max-width: 960px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  padding: 10px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
     .tier-bild {
       flex: 0 0 80px;
       height: 80px;
@@ -161,12 +176,15 @@
       align-items: center;
       justify-content: center;
     }
-    .tier-bild img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
+  .tier-bild img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
     }
-    .tier-text {
+   .tier-text {
       flex: 1;
       padding: 0 10px;
       text-align: center;
@@ -720,6 +738,50 @@
     padding: 0 0.5rem;
   }
 }
+@media (max-width: 600px) {
+  .tier-profil {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .tier-bild, .tier-text, .tier-diagramm {
+    flex: none;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+.tier-bild img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  max-width: 100%;
+  display: block;
+}
+}
+.radio-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 8px;
+}
+.radio-option input[type="radio"] {
+  margin-bottom: 4px;
+}
+.radio-label {
+  font-size: 0.9em;
+  color: #33
+}
+.radio-group {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start; /* statt center */
+  gap: 16px;
+}
+
+.radio-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* das kannst du auch auf flex-start ändern, wenn auch die Zahl ganz links sein soll */
+}
   </style>
 </head>
 <body>
@@ -738,23 +800,24 @@
 <!-- 💬 Einleitungstext (linksbündig) in einem eigenen Container -->
 <div class="intro-text" style="text-align: left;">
   <p>
-    Stell dir vor, du bist in unterschiedlichen Lebensbereichen aktiv – vielleicht in einer Freundesgruppe, einem Sportverein, im Familienkreis oder bei Freizeitprojekten. Je nach Situation verändern sich deine Perspektive, dein Verhalten und dein Zusammenspiel mit anderen.
+    Stell dir vor, du bist in einer typischen Alltagssituation – etwa im Freundeskreis, bei einem Freizeitprojekt, im Familienumfeld oder beim gemeinsamen Planen. Je nach Kontext verändert sich, wie du denkst, handelst und dich im Team einbringst.
   </p>
   <p>
-    In diesem Fragebogen geht es darum, dich selbst besser kennenzulernen: Wie verhältst du dich in bestimmten Alltagssituationen? Was sind deine persönlichen Stärken? Wo gibt es noch Entwicklungspotenzial? Warum läuft das Miteinander mit manchen Menschen reibungslos, während es mit anderen immer wieder zu Reibungspunkten kommt?
+    Dieser Fragebogen hilft dir, dein Verhalten in solchen Situationen besser zu verstehen: Welche Rolle übernimmst du? Wie gehst du mit anderen um? Und was sind deine natürlichen Stärken – oder auch mögliche Stolperfallen im Miteinander?
   </p>
   <p>
-    Zusätzlich gibt es einen separaten Bogen für eine <strong>Fremdeinschätzung</strong>, den Freund*innen, Familienangehörige oder Mitwirkende aus deinem Umfeld ausfüllen können. So hast du die Möglichkeit, dein Selbstbild mit dem Fremdbild zu vergleichen: Wie siehst du dich – und wie sehen andere dich? Wo gibt es Übereinstimmungen, wo Unterschiede?
+    Zusätzlich kannst du eine <strong>Fremdeinschätzung</strong> einholen – von Freund*innen, Familie oder Kolleg*innen. So wird sichtbar, wie andere dich erleben – und wo Selbst- und Fremdbild übereinstimmen oder auseinandergehen.
   </p>
   <p>
-    Bevor du loslegst: Versetze dich in typische Alltagssituationen – beim gemeinsamen Ausgehen, in Freizeitprojekten, bei Hobbys oder in Diskussionen. Überlege, wie du reagierst, Entscheidungen triffst und welche deiner Eigenschaften du dabei einsetzt.
+    Bitte denke beim Ausfüllen konkret an eine Situation, in der du dich gut hineinversetzen kannst. Das hilft dir, intuitiv zu antworten und den Fragebogen ehrlich aus dem Bauch heraus zu beantworten.
   </p>
   <p>
-    Für jede Aussage wählst du eine Zahl von 0 („trifft gar nicht zu“) bis 4 („trifft voll zu“). Antworte ehrlich und aus dem Bauch heraus – je authentischer du bist, desto aussagekräftiger wird dein Ergebnis.
+    Deine Antworten führen zu einem tierischen Verhaltensprofil: Tiermetaphern machen sichtbar, wie du agierst – ob strategisch wie ein Adler, loyal wie ein Hund oder flexibel wie ein Chamäleon. Es geht nicht um richtig oder falsch – sondern um Selbsterkenntnis mit Augenzwinkern.
   </p>
   <p>
-    Viel Spass – und entdecke deine tierisch starken Seiten!
+    Wähle für jede Aussage eine Zahl von 0 („trifft gar nicht zu“) bis 4 („trifft voll zu“). Je authentischer du antwortest, desto stimmiger wird dein Ergebnis.
   </p>
+  <p><strong>Viel Spass – und entdecke deine tierisch starken Seiten!</strong></p>
 </div>
 
 <div class="user-inputs">
@@ -800,11 +863,11 @@
 </div>
 
 <div class="user-inputs">
-  <label for="situation">Welche Situation stellst du dir vor?</label>
+  <label for="situation">Woran denkst du bei den folgenden Fragen?</label>
   <p class="help-text">
-    z. B. „Ich in einer Freundesrunde“, „Ich im Sportverein mit Teammitglieder*innen“ oder „Ich beim Familien­treffen“
+    Beschreibe eine konkrete Alltagssituation, in der du mit anderen Menschen interagierst – z. B. „Ich bei einem Gruppenprojekt“, „Ich mit Freund*innen beim Planen eines Ausflugs“ oder „Ich in Diskussionen in meiner Familie“.
   </p>
-<textarea
+  <textarea
     id="situation"
     name="situation"
     rows="3"
@@ -900,8 +963,8 @@ function makeFileName(name) {
     }
   },
   {
-    frage: "Frage 3: Was motiviert dich, ein neues Hobby oder Projekt wirklich durchzuziehen?",
-    frage_fremd: "Frage 3: Was motiviert die Person, ein neues Hobby oder Projekt zu starten und dranzubleiben?",
+    frage: "Frage 3: Was motiviert dich, ein gemeinsames Hobby oder Freizeitprojekt mit anderen wirklich durchzuziehen?",
+    frage_fremd: "Frage 3: Was motiviert die Person, ein gemeinsames Hobby oder Freizeitprojekt mit anderen wirklich durchzuziehen?",
     keyword: "Motivation",
     answers: {
       A: {
@@ -954,8 +1017,8 @@ function makeFileName(name) {
     }
   },
   {
-    frage: "Frage 5: In welcher Umgebung fühlst du dich am wohlsten, um kreativ zu sein?",
-    frage_fremd: "Frage 5: In welcher Umgebung fühlt sich die Person am wohlsten für kreative Ideen?",
+    frage: "Frage 5: IIn welcher Umgebung fühlst du dich am wohlsten, um gemeinsam mit anderen kreativ zu werden oder Ideen zu entwickeln?",
+    frage_fremd: "Frage 5: In welcher Umgebung fühlt sich die Person besonders wohl, um gemeinsam mit anderen kreativ zu werden?",
     keyword: "Umgebung",
     answers: {
       A: {
@@ -1197,8 +1260,8 @@ function makeFileName(name) {
     }
   },
   {
-    frage: "Frage 14: Welche Kombination dieser vier Eigenschaften trifft am besten auf dich zu?",
-    frage_fremd: "Frage 14: Welche Kombination dieser Eigenschaften passt zur Person?",
+    frage: "Frage 14: Welche dieser Eigenschafts-Kombinationen beschreibt dich am besten in deiner Rolle innerhalb der gewählten Situation?",
+    frage_fremd: "Frage 14: Welche dieser Eigenschafts-Kombinationen beschreibt die Rolle der Person in der vorgestellten Alltagssituation am besten?",
     keyword: "Mix",
     answers: {
       A: {
@@ -1224,8 +1287,8 @@ function makeFileName(name) {
     }
   },
   {
-    frage: "Frage 15: In welchem Bereich möchtest du dich persönlich weiterentwickeln?",
-    frage_fremd: "Frage 15: In welchem Bereich könnte sich die Person weiterentwickeln?",
+    frage: "Frage 15: In welchem Bereich möchtest du dich weiterentwickeln – bezogen auf deine Rolle im Team oder in deinem Umfeld?",
+    frage_fremd: "Frage 15: In welchem Bereich könnte sich die Person in ihrer Rolle innerhalb von Gruppen oder Teams weiterentwickeln?",
     keyword: "Weiterentwicklung",
     answers: {
       A: {
@@ -1277,15 +1340,17 @@ function makeFileName(name) {
         const div = document.createElement("div");
         div.className = "skala-antwort";
 
-        let radios = "";
-        for (let i = 0; i <= 4; i++) {
-          radios += `<label>
-                       <input type="radio"
-                              name="frage${index}_${ans.code}"
-                              value="${i}"
-                              required /> ${i}
-                     </label>`;
-        }
+let radios = `<div class="radio-group">`;
+for (let i = 0; i <= 4; i++) {
+  radios += `
+    <label class="radio-option">
+      <input type="radio"
+             name="frage${index}_${ans.code}"
+             value="${i}"
+             required />
+      <div class="radio-label">${i}</div>
+    </label>`;
+}
 
         const ansText = modus === "fremd" ? ans.text_fremd : ans.text;
         div.innerHTML = `<p><strong>${key}:</strong> ${ansText}</p>${radios}`;
@@ -2069,6 +2134,15 @@ for (let attr in attributeData) {
   attributePercentages[attr] = Math.round((sum / (count * 4)) * 100);
 }
 
+// 🔵 RELATIVE SKALIERUNG (Option A – empfohlen)
+const maxPercent = Math.max(...Object.values(attributePercentages)) || 1;
+
+Object.keys(attributePercentages).forEach(attr => {
+  attributePercentages[attr] = Math.round(
+    (attributePercentages[attr] / maxPercent) * 100
+  );
+});
+
     // Gegenspieler-Abzug dynamisch (Schritt 2)
     if (wert > 2) {
       const gegenspielerTier = gegenspieler[tier];
@@ -2090,7 +2164,7 @@ ergebnisElem.innerHTML += `<h2>„Deine tierischen Verhaltensmuster“</h2>`;
 const sortedTiers = Object.entries(tierCounts).sort((a, b) => b[1] - a[1]);
 const top5 = sortedTiers.slice(0, 5);
 
-// Nur noch einmal den Wrapper mit deiner Css‑Klasse erzeugen:
+// Nur noch einmal den Wrapper mit deiner CSS‑Klasse erzeugen:
 const chartWrap = document.createElement("div");
 chartWrap.className = "chartWrap";
 
@@ -2104,7 +2178,7 @@ top5.forEach(([tier, val]) => {
   div.className = "tier-profil";
   div.innerHTML = `
     <div class="tier-bild">
-      <img src="${fileName}.png" alt="${tier}" />
+     <img src="${makeFileName(tier)}.png" alt="${tier}" style="width:100%; height:auto; display:block;">
     </div>
     <div class="tier-text">
       <strong>${tier}</strong>
@@ -2112,32 +2186,39 @@ top5.forEach(([tier, val]) => {
       <span>Symbolisch für: ${(tierTexte[tier] || {}).symbolischFür || '-'}</span>
     </div>
     <div class="tier-diagramm">
-      <canvas id="${canvasId}" width="80" height="80"></canvas>
+<canvas id="${canvasId}" width="80" height="80"></canvas>
     </div>
   `;
 
   chartWrap.appendChild(div);
 
-  setTimeout(() => {
-    new Chart(
-      document.getElementById(canvasId).getContext("2d"),
-      {
-        type: 'pie',
-        data: {
-          labels: ["Erreichte Punkte", "Fehlende Punkte"],
-          datasets: [{
-            data: [val, maxPunkte - val],
-            backgroundColor: ["#E44A00", "#FFD1B2"],
-            borderWidth: 0
-          }]
-        },
-        options: {
-          responsive: false,
-          plugins: { legend: { display: false } }
+setTimeout(() => {
+  new Chart(
+    document.getElementById(canvasId).getContext("2d"),
+    {
+      type: 'pie',
+      data: {
+        labels: [], // Keine Labels im Diagramm
+        datasets: [{
+          data: [val, maxPunkte - val],
+          backgroundColor: ["#E44A00", "#FFD1B2"],
+          borderWidth: 0
+        }]
+      },
+      options: {
+        responsive: false,
+        plugins: {
+          legend: {
+            display: false
+          },
+          tooltip: {
+            enabled: false
+          }
         }
       }
-    );
-  }, 10);
+    }
+  );
+}, 10);
 });
 
 ergebnisElem.appendChild(chartWrap);
@@ -2198,31 +2279,30 @@ if (sortedOpponents.length > 0) {
 
   // Erstelle HTML für den ersten Gegner:
   let conflictHTML = `
+  <div class="tier-container">
+    <div class="tier-bild">
+      <img src="${makeFileName(opponent1)}.png" alt="${opponent1}" style="width:100%; height:auto; display:block;" />
+    </div>
+    <div class="tier-text">
+      <strong>${opponent1}</strong>
+      <p>${conflictTextAggregation[opponent1] || ""}</p>
+    </div>
+  </div>
+`;
+
+if (opponent2) {
+  conflictHTML += `
     <div class="tier-container">
       <div class="tier-bild">
-        <img src="${opponent1.toLowerCase()}.png" alt="${opponent1}" />
+        <img src="${makeFileName(opponent2)}.png" alt="${opponent2}" style="width:100%; height:auto; display:block;" />
       </div>
       <div class="tier-text">
-        <strong>${opponent1}</strong>
-        <p>${conflictTextAggregation[opponent1] || ""}</p>
+        <strong>${opponent2}</strong>
+        <p>${conflictTextAggregation[opponent2] || ""}</p>
       </div>
     </div>
   `;
-
-  // Falls ein zweiter Gegner existiert, füge ihn hinzu:
-  if (opponent2) {
-    conflictHTML += `
-      <div class="tier-container">
-        <div class="tier-bild">
-          <img src="${opponent2.toLowerCase()}.png" alt="${opponent2}" />
-        </div>
-        <div class="tier-text">
-          <strong>${opponent2}</strong>
-          <p>${conflictTextAggregation[opponent2] || ""}</p>
-        </div>
-      </div>
-    `;
-  }
+}
 
   conflictDiv.innerHTML = conflictHTML;
   ergebnisElem.appendChild(conflictDiv);
@@ -2272,7 +2352,6 @@ const beschreibungStyle = `
   text-align: left;
 `;
 
-
 // Mapping: Kategorie → relevante Frageindizes (Freizeit)
 const kategorienMapping = {
   "Gruppenaktivitäten & Zusammenarbeit": [0, 1, 9],
@@ -2286,7 +2365,7 @@ const kategorienMapping = {
 const categoryDescriptions = {
   "Gruppenaktivitäten & Zusammenarbeit": {
     "Ameise": "Organisiert und zielstrebig, sorgt für Struktur in der Gruppe.",
-    "Biene": "Fleißig und gemeinschaftlich, fördert den Zusammenhalt.",
+    "Biene": "Fleissig und gemeinschaftlich, fördert den Zusammenhalt.",
     "Chamäleon": "Flexibel und kreativ, bringt neue Ideen in Aktivitäten.",
     "Hund": "Empathisch und loyal, stärkt das Miteinander.",
     "Adler": "Kann inspirieren, neigt aber zu Individualismus.",
@@ -2499,8 +2578,8 @@ Object.keys(kategorienMapping).forEach(kat => {
     align-items: flex-start;
     gap: 20px;
     padding: 20px;
-    background-color: var(--bg-card, #fff);
-    color: var(--text-color, #000);
+   background-color: #ffffff;
+color: #000000;
     border-radius: 16px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.08);
     margin: 20px 0;
@@ -2690,7 +2769,7 @@ formElem.addEventListener("submit", function(e) {
 }, 0); // oder 50–100ms
 
 }); // 
-  }); // ← schließt formElem.addEventListener("submit", …)
+  }); // ← schliesst formElem.addEventListener("submit", …)
 
 
   // 🧠 E-Mail prüfen, Button nur aktivieren bei gültiger Adresse

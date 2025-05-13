@@ -2,6 +2,7 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Fragebogen mit Tierprofil</title>
   <!-- Open Sans einbinden statt Roboto -->
@@ -154,6 +155,20 @@
       align-items: center;
       margin-bottom: 20px;
     }
+.tier-container {
+  width: 100%;
+  max-width: 960px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  padding: 10px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
     .tier-bild {
       flex: 0 0 80px;
       height: 80px;
@@ -161,12 +176,15 @@
       align-items: center;
       justify-content: center;
     }
-    .tier-bild img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
+  .tier-bild img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
     }
-    .tier-text {
+   .tier-text {
       flex: 1;
       padding: 0 10px;
       text-align: center;
@@ -538,7 +556,7 @@
   border-left: 6px solid var(--border-color);
 }
 
-/* Ab Tablet‑Grösse nebeneinander anordnen */
+/* Ab Tablet‑Größe nebeneinander anordnen */
 @media (min-width: 600px) {
   .section {
     flex-direction: row;
@@ -720,6 +738,50 @@
     padding: 0 0.5rem;
   }
 }
+@media (max-width: 600px) {
+  .tier-profil {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .tier-bild, .tier-text, .tier-diagramm {
+    flex: none;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+.tier-bild img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  max-width: 100%;
+  display: block;
+}
+}
+.radio-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 8px;
+}
+.radio-option input[type="radio"] {
+  margin-bottom: 4px;
+}
+.radio-label {
+  font-size: 0.9em;
+  color: #33
+}
+.radio-group {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start; /* statt center */
+  gap: 16px;
+}
+
+.radio-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* das kannst du auch auf flex-start ändern, wenn auch die Zahl ganz links sein soll */
+}
   </style>
 </head>
 <body>
@@ -731,30 +793,34 @@
   </div>
 
  <!-- 🐾 Einleitung (zentriert) -->
-<div style="text-align: center;">
-  <h2>Welcome to the <span style="color:#E44A00;">OrganisationsZoo</span></h2>
-</div>
-
-<!-- 💬 Einleitungstext (linksbündig) in einem eigenen Container -->
 <div class="intro-text" style="text-align: left;">
   <p>
-   Imagine you’re active in various areas of life – perhaps with friends, in a sports club, among family, or on leisure projects. Depending on the context, your perspective, behavior, and interactions with others can shift.
+    Imagine yourself in a typical everyday situation – for example, with friends, during a hobby project, at a family gathering, or while planning something together. Depending on the context, the way you think, act, and contribute to a group may vary.
   </p>
   <p>
-    This questionnaire is designed to help you get to know yourself better: How do you behave in everyday situations? What are your personal strengths? Where is there room for growth? Why do some relationships flow effortlessly while others encounter friction?
+    This questionnaire helps you better understand your behaviour in such situations: What role do you take on? How do you interact with others? What are your natural strengths – and where might there be some stumbling blocks in your interactions?
   </p>
   <p>
-    There’s also a separate form for a <strong>third-party assessment</strong>, which friends, family members, or colleagues can fill out. This lets you compare your self-image with how others perceive you: How do you see yourself, and how do they see you? Where do your views align, and where do they diverge?
+    You can also ask someone to provide an <strong>external assessment</strong> – from a friend, family member or colleague. This offers a view of how others perceive you – and where your self-image and how you're seen by others align or differ.
   </p>
   <p>
-    Before you begin, put yourself in typical scenarios – a night out, a group project, a hobby session, or a discussion. Think about how you react, make decisions, and which of your traits you bring to the table.
+    When filling in the questionnaire, please think of a specific situation you can clearly imagine. This will help you answer intuitively and respond honestly, based on your gut feeling.
   </p>
   <p>
-    For each statement, choose a number from 0 (“doesn’t apply at all”) to 4 (“fully applies”). Answer honestly and intuitively – the more authentic you are, the more insightful your results will be.
+    Your responses will generate an animal-based behaviour profile: animal metaphors illustrate how you tend to act – whether strategically like an eagle, loyally like a dog, or flexibly like a chameleon. It's not about right or wrong – but about self-awareness with a touch of humour.
   </p>
   <p>
-    Have fun – and discover your animal-powered strengths! 
+    For each statement, choose a number from 0 (“does not apply at all”) to 4 (“applies fully”). The more honestly you answer, the more accurate your result will be.
   </p>
+  <p><strong>Have fun – and discover your animal strengths!</strong></p>
+</div>
+
+<div class="user-inputs">
+  <label>Who are you rating?</label>
+  <div class="radio-group">
+    <label><input type="radio" name="modus" value="selbst" checked> Myself</label>
+    <label><input type="radio" name="modus" value="fremd"> Another person</label>
+  </div>
 </div>
 
 <div class="user-inputs">
@@ -800,15 +866,15 @@
 </div>
 
 <div class="user-inputs">
-  <label for="situation">Which situation are you imagining?</label>
+  <label for="situation">What situation are you imagining when answering?</label>
   <p class="help-text">
-    e.g., "Me in a group of friends," "Me in a sports club with teammates," or "Me at a family gathering"
+    Describe a specific everyday situation where you interact with others – e.g. “When I'm working on a group project”, “When I'm planning a trip with friends”, or “When I'm in discussions with my family”.
   </p>
   <textarea
     id="situation"
     name="situation"
     rows="3"
-    placeholder="Briefly describe your role and situation"
+    placeholder="Briefly describe your role and the situation"
     required
   ></textarea>
 </div>
@@ -900,8 +966,8 @@ function makeFileName(name) {
     }
   },
   {
-  frage: "Question 3: What motivates you to really stick with a new hobby or project?",
-  frage_fremd: "Question 3: What motivates the person to start and stick with a new hobby or project?",
+  frage: "Question 3: What motivates you to follow through with a shared hobby or leisure project with others?",
+  frage_fremd: "Question 3: What motivates the person to follow through with a shared hobby or leisure project with others?",
   keyword: "Motivation",
   answers: {
     A: {
@@ -954,8 +1020,8 @@ function makeFileName(name) {
     }
   },
   {
-   frage: "Question 5: In what kind of environment do you feel most creative?",
-    frage_fremd: "Question 5: In what environment does the person feel most creative?",
+   frage: "Question 5: In what environment do you feel most comfortable becoming creative or developing ideas with others?",
+    frage_fremd: "Question 5: In what environment does the person feel most comfortable becoming creative with others?",
     keyword: "Environment",
     answers: {
       A: { code: "S9", text: "A quiet place where I can <strong>think</strong> undisturbed.", text_fremd: "The person needs a quiet place to <strong>think</strong> undisturbed." },
@@ -1062,8 +1128,8 @@ function makeFileName(name) {
     }
   },
   {
-    frage: "Question 14: Which combination of traits best describes you?",
-    frage_fremd: "Question 14: Which combination of traits fits the person?",
+    frage: "Question 14: Which of these trait combinations best describes you in your role within the chosen situation?",
+    frage_fremd: "Question 14: Which of these trait combinations best describes the person's role in the imagined everyday situation?",
     keyword: "Mix",
     answers: {
       A: { code: "C1", text: "Visionary, adaptable, creative, and energetic.", text_fremd: "Visionary, adaptable, creative, and energetic fits." },
@@ -1074,8 +1140,8 @@ function makeFileName(name) {
     }
   },
   {
-    frage: "Question 15: In which area would you like to grow personally?",
-    frage_fremd: "Question 15: In which area could the person develop?",
+    frage: "Question 15: In which area would you like to develop further—regarding your role in the team or your environment?",
+    frage_fremd: "Question 15: In which area could the person develop further in their role within groups or teams?",
     keyword: "Growth",
     answers: {
       A: { code: "C1", text: "Become more relaxed and want to <strong>control</strong> less.", text_fremd: "The person could learn to <strong>control</strong> less." },
@@ -1113,15 +1179,17 @@ function makeFileName(name) {
         const div = document.createElement("div");
         div.className = "skala-antwort";
 
-        let radios = "";
-        for (let i = 0; i <= 4; i++) {
-          radios += `<label>
-                       <input type="radio"
-                              name="frage${index}_${ans.code}"
-                              value="${i}"
-                              required /> ${i}
-                     </label>`;
-        }
+let radios = `<div class="radio-group">`;
+for (let i = 0; i <= 4; i++) {
+  radios += `
+    <label class="radio-option">
+      <input type="radio"
+             name="frage${index}_${ans.code}"
+             value="${i}"
+             required />
+      <div class="radio-label">${i}</div>
+    </label>`;
+}
 
         const ansText = modus === "fremd" ? ans.text_fremd : ans.text;
         div.innerHTML = `<p><strong>${key}:</strong> ${ansText}</p>${radios}`;
@@ -1881,6 +1949,15 @@ for (let attr in attributeData) {
   attributePercentages[attr] = Math.round((sum / (count * 4)) * 100);
 }
 
+// 🔵 RELATIVE SKALIERUNG (Option A – empfohlen)
+const maxPercent = Math.max(...Object.values(attributePercentages)) || 1;
+
+Object.keys(attributePercentages).forEach(attr => {
+  attributePercentages[attr] = Math.round(
+    (attributePercentages[attr] / maxPercent) * 100
+  );
+});
+
     // Gegenspieler-Abzug dynamisch (Schritt 2)
     if (wert > 2) {
       const gegenspielerTier = gegenspieler[tier];
@@ -1898,11 +1975,11 @@ const gesamtPunkte = Object.values(tierCounts).reduce((sum, v) => sum + v, 0);
 // ---------------------------
 // Gesamtauswertung Top-5 Tierprofile
 // ---------------------------
-ergebnisElem.innerHTML += `<h2>"Your Animal Behavior Patterns"</h2>`;
+ergebnisElem.innerHTML += `<h2>„Deine tierischen Verhaltensmuster“</h2>`;
 const sortedTiers = Object.entries(tierCounts).sort((a, b) => b[1] - a[1]);
 const top5 = sortedTiers.slice(0, 5);
 
-// Nur noch einmal den Wrapper mit deiner Css‑Klasse erzeugen:
+// Nur noch einmal den Wrapper mit deiner CSS‑Klasse erzeugen:
 const chartWrap = document.createElement("div");
 chartWrap.className = "chartWrap";
 
@@ -1916,7 +1993,7 @@ top5.forEach(([tier, val]) => {
   div.className = "tier-profil";
   div.innerHTML = `
     <div class="tier-bild">
-      <img src="${fileName}.png" alt="${tier}" />
+     <img src="${makeFileName(tier)}.png" alt="${tier}" style="width:100%; height:auto; display:block;">
     </div>
     <div class="tier-text">
       <strong>${tier}</strong>
@@ -1924,32 +2001,39 @@ top5.forEach(([tier, val]) => {
       <span>Symbolisch für: ${(tierTexte[tier] || {}).symbolischFür || '-'}</span>
     </div>
     <div class="tier-diagramm">
-      <canvas id="${canvasId}" width="80" height="80"></canvas>
+<canvas id="${canvasId}" width="80" height="80"></canvas>
     </div>
   `;
 
   chartWrap.appendChild(div);
 
-  setTimeout(() => {
-    new Chart(
-      document.getElementById(canvasId).getContext("2d"),
-      {
-        type: 'pie',
-        data: {
-          labels: ["Erreichte Punkte", "Fehlende Punkte"],
-          datasets: [{
-            data: [val, maxPunkte - val],
-            backgroundColor: ["#E44A00", "#FFD1B2"],
-            borderWidth: 0
-          }]
-        },
-        options: {
-          responsive: false,
-          plugins: { legend: { display: false } }
+setTimeout(() => {
+  new Chart(
+    document.getElementById(canvasId).getContext("2d"),
+    {
+      type: 'pie',
+      data: {
+        labels: [], // Keine Labels im Diagramm
+        datasets: [{
+          data: [val, maxPunkte - val],
+          backgroundColor: ["#E44A00", "#FFD1B2"],
+          borderWidth: 0
+        }]
+      },
+      options: {
+        responsive: false,
+        plugins: {
+          legend: {
+            display: false
+          },
+          tooltip: {
+            enabled: false
+          }
         }
       }
-    );
-  }, 10);
+    }
+  );
+}, 10);
 });
 
 ergebnisElem.appendChild(chartWrap);
@@ -1965,7 +2049,7 @@ ergebnisElem.appendChild(chartWrap);
 
 const myAnimals = top5.map(item => item[0]); // Deine Top 5
 
-// Erstelle ein Aggregationsobjekt, um Konfliktpunkte für Tiere (ausserhalb der Top‑5) zu sammeln.
+// Erstelle ein Aggregationsobjekt, um Konfliktpunkte für Tiere (außerhalb der Top‑5) zu sammeln.
 const conflictAggregation = {};
 // Speichere zu jedem Konfliktpartner den (ersten) Konflikttext
 const conflictTextAggregation = {};
@@ -2001,7 +2085,7 @@ if (sortedOpponents.length > 0) {
   
   // Erstelle den Header:
   let conflictHeader = document.createElement("div");
-  conflictHeader.innerHTML = "<h2 style='font-size: 1.5em;'>„Where tensions arise in the enclosure...“</h2>";
+  conflictHeader.innerHTML = "<h2 style='font-size: 1.5em;'>„Wo’s im Gehege kracht…“</h2>";
   ergebnisElem.appendChild(conflictHeader);
 
   // Erstelle den Container für die Konfliktpartner:
@@ -2010,31 +2094,30 @@ if (sortedOpponents.length > 0) {
 
   // Erstelle HTML für den ersten Gegner:
   let conflictHTML = `
+  <div class="tier-container">
+    <div class="tier-bild">
+      <img src="${makeFileName(opponent1)}.png" alt="${opponent1}" style="width:100%; height:auto; display:block;" />
+    </div>
+    <div class="tier-text">
+      <strong>${opponent1}</strong>
+      <p>${conflictTextAggregation[opponent1] || ""}</p>
+    </div>
+  </div>
+`;
+
+if (opponent2) {
+  conflictHTML += `
     <div class="tier-container">
       <div class="tier-bild">
-        <img src="${opponent1.toLowerCase()}.png" alt="${opponent1}" />
+        <img src="${makeFileName(opponent2)}.png" alt="${opponent2}" style="width:100%; height:auto; display:block;" />
       </div>
       <div class="tier-text">
-        <strong>${opponent1}</strong>
-        <p>${conflictTextAggregation[opponent1] || ""}</p>
+        <strong>${opponent2}</strong>
+        <p>${conflictTextAggregation[opponent2] || ""}</p>
       </div>
     </div>
   `;
-
-  // Falls ein zweiter Gegner existiert, füge ihn hinzu:
-  if (opponent2) {
-    conflictHTML += `
-      <div class="tier-container">
-        <div class="tier-bild">
-          <img src="${opponent2.toLowerCase()}.png" alt="${opponent2}" />
-        </div>
-        <div class="tier-text">
-          <strong>${opponent2}</strong>
-          <p>${conflictTextAggregation[opponent2] || ""}</p>
-        </div>
-      </div>
-    `;
-  }
+}
 
   conflictDiv.innerHTML = conflictHTML;
   ergebnisElem.appendChild(conflictDiv);
@@ -2083,7 +2166,6 @@ const beschreibungStyle = `
   color: #333;
   text-align: left;
 `;
-
 
 // Mapping: Kategorie → relevante Frageindizes (Freizeit)
 const kategorienMapping = {
@@ -2259,7 +2341,7 @@ headingWrapper.style.display = "flex";
 headingWrapper.style.flexDirection = "column";
 headingWrapper.style.gap = "12px";
 
-// 1. Haupttitel: Instincts, Intuition & Influence
+// 1. Haupttitel: Instinkte, Intuition & Einfluss
 const subtitle = document.createElement("h2");
 subtitle.textContent = "Instinkte, Intuition & Einfluss";
 subtitle.style.fontSize = "1.6em";
@@ -2271,7 +2353,7 @@ headingWrapper.appendChild(subtitle);
 
 // 2. Erklärungstext
 const erklaerung = document.createElement("p");
-erklaerung.textContent = "This overview shows how your character tendencies express themselves in different situations – without putting you in a box, but with a wink."
+erklaerung.textContent = "Diese Übersicht zeigt, wie deine charakterlichen Tendenzen sich in verschiedenen Situationen ausdrücken – ganz ohne Schubladendenken, aber mit einem Augenzwinkern.";
 erklaerung.style.fontSize = "0.95em";
 erklaerung.style.lineHeight = "1.6";
 erklaerung.style.margin = "0";
@@ -2279,9 +2361,9 @@ erklaerung.style.textAlign = "left";
 erklaerung.style.color = "inherit";
 headingWrapper.appendChild(erklaerung);
 
-// 3. Zweite Hauptzeile: "Your Behavior Map"
+// 3. Zweite Hauptzeile: „Deine Verhaltenskarte“
 const verhaltensTitel = document.createElement("h2");
-verhaltensTitel.textContent = "„Your Behavior Map“";
+verhaltensTitel.textContent = "„Deine Verhaltenskarte“";
 verhaltensTitel.style.fontSize = "1.6em";
 verhaltensTitel.style.fontWeight = "700";
 verhaltensTitel.style.margin = "24px 0 0";
@@ -2311,8 +2393,8 @@ Object.keys(kategorienMapping).forEach(kat => {
     align-items: flex-start;
     gap: 20px;
     padding: 20px;
-    background-color: var(--bg-card, #fff);
-    color: var(--text-color, #000);
+   background-color: #ffffff;
+color: #000000;
     border-radius: 16px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.08);
     margin: 20px 0;
